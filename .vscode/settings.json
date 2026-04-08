@@ -1,0 +1,11 @@
+{
+    "label": "build C",
+    "type": "shell",
+    "command": "C:\\mingw64\\bin\\gcc.exe",
+    "args": [
+      "${file}",
+      "-o",
+      "${fileDirname}\\${fileBasenameNoExtension}.exe"
+    ],
+    "C_Cpp.default.compilerPath": "C:/msys64/ucrt64/bin/gcc.exe"
+  }

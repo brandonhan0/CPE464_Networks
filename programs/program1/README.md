@@ -1,0 +1,1 @@
+"mingw32-make" is what you run to compile the main.c

@@ -1,11 +1,7 @@
-# run mingw32-make to run this, i know annoying im sorry
-CC = gcc
-LIBS = -lpcap
-CFLAGS = -g -Wall -pedantic -std=gnu99
-
-
 PCAPS := $(wildcard *.pcap)
 OUTS  := $(PCAPS:.pcap=.out)
+LIBS = -lpcap
+CC = gcc
 
 all:  trace 
 outFiles: $(OUTS)

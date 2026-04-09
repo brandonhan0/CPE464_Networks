@@ -10,9 +10,9 @@
 int ethernet(const unsigned char *packet);
 void arp(const unsigned char *packet);
 int ip(const unsigned char *packet);
-void icmp(const unsigned char *packet, int ip_header_len);
+void icmp(const unsigned char *packet);
 void tcp(const unsigned char *packet, int ip_header_len);
-void udp(const unsigned char *packet, int ip_header_len);
+void udp(const unsigned char *packet);
 
 
 #pragma pack(push, 1)
@@ -81,5 +81,14 @@ typedef struct {
     uint16_t checksum;
     uint16_t urgent_ptr;
 } tcp_o;
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+typedef struct{
+    uint16_t src_port;
+    uint16_t dst_port;
+    uint16_t len;
+    uint16_t checksum;
+}udp_o;
 #pragma pack(pop)
 

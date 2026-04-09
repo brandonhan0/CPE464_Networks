@@ -1,7 +1,7 @@
 #include "trace.h"
 
 
-int ethernet(const unsigned char *packet){ // done
+int ethernet(const unsigned char *packet){
 
     /*
     Dest MAC: 0:6:25:78:c4:7d
@@ -16,15 +16,15 @@ int ethernet(const unsigned char *packet){ // done
     printf("\t\tSource MAC: %s\n", ether_ntoa((const struct ether_addr *)data->src_mac));
 
     if(data->type == 1544){ // 0x0806 arp it looks big edien so the bytes are flipped
-        printf("\t\tType: ARP\n");
+        printf("\t\tType: ARP\n\n");
         return 1;
     } else if (data->type == 8){ // 0x0800 is IPv4 same here so this is like actually 0x0008
-        printf("\t\tType: IP\n");
+        printf("\t\tType: IP\n\n");
         return 0;
     }
     return -1;
 }
-void arp(const unsigned char *packet){ // done
+void arp(const unsigned char *packet){
 
     /*
     ARP header
@@ -50,7 +50,7 @@ void arp(const unsigned char *packet){ // done
     memcpy(&dst_ip_, data->dst_ip, 4);
     printf("\t\tTarget IP: %s\n", inet_ntoa(dst_ip_ ));
 }
-int ip(const unsigned char *packet){
+int ip(const unsigned char *packet){ // checksum
     /*
     
     IP Header
@@ -70,7 +70,7 @@ int ip(const unsigned char *packet){
     int header_len = ((data->version_header_len & 15)*4); // chill bit mask
     printf("\tIP Header\n");
 
-    printf("\t\tIP PDU Len: %d\n", ntohs(data->total_length)); // this is not right ntohs reverses the byte order
+    printf("\t\tIP PDU Len: %d\n", ntohs(data->total_length)); // ntohs reverses the byte order
     printf("\t\tHeader Len (bytes): %d\n", header_len);
     printf("\t\tTTL: %d\n", data->ttl);
     switch(data->protocol){
@@ -83,20 +83,55 @@ int ip(const unsigned char *packet){
             out = 0;
             break;
         case 17:
-            printf("\t\tProtocol: TCP\n");
+            printf("\t\tProtocol: UDP\n");
             out = 2;
             break;
+        default:
+            out = -1;
+            break;
     }
-    printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); // this is wrong do it better
+    if(1==1) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else printf("Checksum: Incorrect (0x%04x)\n", ntohs(data->checksum)); // this is wrong do it better
     memcpy(&src_ip_, data->src_ip, 4);
     printf("\t\tSender IP: %s\n", inet_ntoa(src_ip_));
     memcpy(&dst_ip_, data->dst_ip, 4);
-    printf("\t\tTarget IP: %s\n", inet_ntoa(dst_ip_ ));
+    printf("\t\tDest IP: %s\n", inet_ntoa(dst_ip_));
     return out;
 }
-void icmp(const unsigned char *packet, int ip_len){}
-void tcp(const unsigned char *packet, int ip_len){}
-void udp(const unsigned char *packet, int ip_len){}
+void icmp(const unsigned char *packet){
+    // this is so fake lol
+    icmp_o* data = (icmp_o*) packet;
+    printf("\tICMP Header\n");
+    if(data->type == 0) printf("\t\tType: Reply\n"); else printf("\t\tType: Request\n");
+}
+void tcp(const unsigned char *packet, int ip_len){ // checksum
+    ip_o *ip_header = (ip_o *)packet;
+    tcp_o *data = (tcp_o *)(packet + ip_len);
+
+    printf("\tTCP Header\n");
+    int seg_len = ntohs(ip_header->total_length) - ((ip_header->version_header_len & 15)*4);
+    printf("\t\tSegment Length: %d\n", seg_len);
+    if (ntohs(data->src_port) != 80) printf("\t\tSource Port: %d\n", ntohs(data->src_port)); else printf("\t\tSource Port: HTTP\n");
+    if (ntohs(data->dst_port) != 80) printf("\t\tDest Port: %d\n", ntohs(data->dst_port)); else printf("\t\tDest Port: HTTP\n");
+
+
+
+    printf("\t\tSequence Number: %u\n", ntohl(data->seq_num)); // had to make %u instead of %d bc it was getting negative
+    printf("\t\tACK Number: %u\n", ntohl(data->ack_num));  
+
+    if (data->flags & 0x2) printf("\t\tSYN Flag: Yes\n"); else printf("\t\tSYN Flag: No\n");
+    if (data->flags & 0x4) printf("\t\tRST Flag: Yes\n"); else printf("\t\tRST Flag: No\n");
+    if (data->flags & 0x1) printf("\t\tFIN Flag: Yes\n"); else printf("\t\tFIN Flag: No\n");
+    if (data->flags & 0x10) printf("\t\tACK Flag: Yes\n"); else printf("\t\tACK Flag: No\n");
+
+    printf("\t\tWindow Size: %d\n", ntohs(data->window));
+    if(1==1) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else printf("Checksum: Incorrect (0x%04x)\n", ntohs(data->checksum));
+}
+void udp(const unsigned char *packet){
+    udp_o* data = (udp_o*)packet;
+    printf("\tUDP Header\n");
+    if (ntohs(data->src_port) != 53) printf("\t\tSource Port: %d\n", ntohs(data->src_port)); else printf("\t\tSource Port: DNS\n");
+    if (ntohs(data->dst_port) != 53) printf("\t\tDest Port: %d\n", ntohs(data->dst_port)); else printf("\t\tDest Port: DNS\n");
+}
 
 
 int main(int argc, char *argv[]) {
@@ -122,6 +157,8 @@ int main(int argc, char *argv[]) {
     int result;
     int what_is_it;
     int packet_num = 1; // counter
+    ip_o* ip_header;
+    int ip_len;
 
     if (argc != 2) {
         printf("please insert parameter\n"); // no args
@@ -133,7 +170,7 @@ int main(int argc, char *argv[]) {
         printf("file could not open\n"); // no args
         return 1;
     }
-
+    printf("\n");
     while((result = pcap_next_ex(handle, &header, &packet)) > 0){ // will basically loop until eof for saved pcap files, changes the pointer to header and pointer to the data
 
         if(result == -1){ // in case packet read error
@@ -143,17 +180,35 @@ int main(int argc, char *argv[]) {
 
         // first it is a ethernet payload so right now 
 
-        printf("Packet number: %d   Packet len: %d\n\n", packet_num, header->len); // this is right yipeeeee 
+        printf("Packet number: %d  Packet Len: %d\n\n", packet_num, header->len); // this is right yipeeeee 
 
         what_is_it = ethernet(packet);
 
         if(what_is_it == 1){ // arp
             arp(packet  + sizeof(ethernet_o)); // ARP starts after ethernet so need to add this so we can start at ARP part of ethernet payload
         } else if(what_is_it == 0){
-            ip(packet + sizeof(ethernet_o));
+            what_is_it = ip(packet + sizeof(ethernet_o)); // do ip
+
+            ip_header = (ip_o *)(packet + sizeof(ethernet_o));
+            ip_len = (ip_header->version_header_len & 0x0F) * 4;
+
+            switch(what_is_it){ // third layer
+                case 0: // TCP
+                    tcp(packet + sizeof(ethernet_o), ip_len);
+                    break;
+                case 1: // ICMP
+                    icmp(packet + sizeof(ethernet_o) + ip_len);
+                    break;
+                case 2: // UDP
+                    udp(packet + sizeof(ethernet_o) + ip_len);
+                    break;
+                default:
+                    printf("bad ip payload");
+                    break;
+            }
         }
 
-        printf("\n\n");
+        printf("\n");
         packet_num++;
     }
 

@@ -68,7 +68,7 @@ int ip(const unsigned char *packet){ // checksum
     struct in_addr dst_ip_;
     ip_o* data = (ip_o*)packet;
     int header_len = ((data->version_header_len & 15)*4); // chill bit mask
-    printf("\tIP Header\n\n");
+    printf("\tIP Header\n");
 
     printf("\t\tIP PDU Len: %d\n", ntohs(data->total_length)); // ntohs reverses the byte order
     printf("\t\tHeader Len (bytes): %d\n", header_len);
@@ -87,21 +87,22 @@ int ip(const unsigned char *packet){ // checksum
             out = 2;
             break;
         default:
+            printf("\t\tProtocol: Unknown\n");
             out = -1;
             break;
-    }
-    if(in_cksum((unsigned short) data, sizeof()) == 0) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else if(in_cksum((unsigned short) data, sizeof()) != 0)printf("Checksum: Incorrect (0x%04x)\n", ntohs(data->checksum)); // this is wrong do it better
+    }    
+    if(in_cksum((unsigned short*)data, header_len) == 0) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else if(in_cksum((unsigned short*)data, header_len) != 0)printf("\t\tChecksum: Incorrect (0x%04x)\n", ntohs(data->checksum)); // this is wrong do it better
     memcpy(&src_ip_, data->src_ip, 4);
     printf("\t\tSender IP: %s\n", inet_ntoa(src_ip_));
     memcpy(&dst_ip_, data->dst_ip, 4);
-    printf("\t\tDest IP: %s\n", inet_ntoa(dst_ip_));
+    printf("\t\tDest IP: %s\n\n", inet_ntoa(dst_ip_));
     return out;
 }
 void icmp(const unsigned char *packet){
     // this is so fake lol
     icmp_o* data = (icmp_o*) packet;
     printf("\tICMP Header\n");
-    if(data->type == 0) printf("\t\tType: Reply\n"); else printf("\t\tType: Request\n");
+    if(data->type == 0) printf("\t\tType: Reply\n"); else if(data->type == 8)printf("\t\tType: Request\n"); else printf("\t\tType: %d\n", data->type);
 }
 void tcp(const unsigned char *packet, int ip_len){ // checksum
     ip_o *ip_header = (ip_o *)packet;
@@ -124,7 +125,23 @@ void tcp(const unsigned char *packet, int ip_len){ // checksum
     if (data->flags & 0x10) printf("\t\tACK Flag: Yes\n"); else printf("\t\tACK Flag: No\n");
 
     printf("\t\tWindow Size: %d\n", ntohs(data->window));
-    if(in_cksum((unsigned short*)data, sizeof(data)) ==0) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else if(in_cksum((unsigned short*)data, sizeof(data)) != 0)printf("Checksum: Incorrect (0x%04x)\n", ntohs(data->checksum));
+
+    tcp_checksum_o temp;
+    memcpy(temp.src_ip, ip_header->src_ip, 4);
+    memcpy(temp.dst_ip, ip_header->dst_ip, 4);
+    temp.zero = 0;
+    temp.protocol = ip_header->protocol;
+    temp.tcp_len = htons(seg_len);
+
+    int buf_len = sizeof(tcp_checksum_o) + seg_len;
+    unsigned char *buf = malloc(buf_len);
+
+    memcpy(buf, &temp, sizeof(tcp_checksum_o));
+    memcpy(buf + sizeof(tcp_checksum_o), packet + ip_len, seg_len);
+
+    unsigned short result = in_cksum((unsigned short *)buf, buf_len);
+
+    if(result == 0) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else if(result != 0)printf("\t\tChecksum: Incorrect (0x%04x)\n", ntohs(data->checksum));
 }
 void udp(const unsigned char *packet){
     udp_o* data = (udp_o*)packet;
@@ -160,23 +177,9 @@ int main(int argc, char *argv[]) {
     ip_o* ip_header;
     int ip_len;
 
-    if (argc != 2) {
-        printf("please insert parameter\n"); // no args
-        return 1;
-    }
-
     handle = pcap_open_offline(argv[1], errbuf); // opens saved pcap file for analysis
-    if (handle == NULL) {
-        printf("file could not open\n"); // no args
-        return 1;
-    }
     printf("\n");
     while((result = pcap_next_ex(handle, &header, &packet)) > 0){ // will basically loop until eof for saved pcap files, changes the pointer to header and pointer to the data
-
-        if(result == -1){ // in case packet read error
-            printf("packet read error\n");
-            return 1;
-        }
 
         // first it is a ethernet payload so right now 
 
@@ -203,7 +206,6 @@ int main(int argc, char *argv[]) {
                     udp(packet + sizeof(ethernet_o) + ip_len);
                     break;
                 default:
-                    printf("\t\tProtocol: Unknown\n");
                     break;
             }
         }

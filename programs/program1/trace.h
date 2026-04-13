@@ -93,3 +93,12 @@ typedef struct{
 }udp_o;
 #pragma pack(pop)
 
+#pragma pack(push, 1) // need this for 
+typedef struct {
+    uint8_t src_ip[4];
+    uint8_t dst_ip[4];
+    uint8_t zero;
+    uint8_t protocol;
+    uint16_t tcp_len;
+} tcp_checksum_o;
+#pragma pack(pop)

@@ -26,9 +26,9 @@ run_test () {
 
 # ===== TEST CASES =====
 run_test IP_bad_checksum.pcap IP_bad_checksum.out # fail
-run_test TCP_bad_checksum.pcap TCP_bad_checksum.out
 
 
+run_test TCP_bad_checksum.pcap TCP_bad_checksum.out # pass
 run_test UDPfile.pcap UDPfile.out # pass
 run_test PingTest.pcap PingTest.out # pass
 run_test mix_withIPoptions.pcap mix_withIPoptions.out # pass

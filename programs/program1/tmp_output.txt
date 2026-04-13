@@ -7,14 +7,14 @@ Packet number: 1  Packet Len: 71
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 57
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: UDP
-Checksum: Incorrect (0x512b)
+		Checksum: Correct (0x512b)
 		Sender IP: 192.168.1.102
 		Dest IP: 64.166.172.8
+
 	UDP Header
 		Source Port: 1300
 		Dest Port: DNS
@@ -27,14 +27,14 @@ Packet number: 2  Packet Len: 71
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 57
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: UDP
-Checksum: Incorrect (0x52bf)
+		Checksum: Correct (0x52bf)
 		Sender IP: 192.168.1.102
 		Dest IP: 206.13.29.12
+
 	UDP Header
 		Source Port: 1300
 		Dest Port: DNS
@@ -47,14 +47,14 @@ Packet number: 3  Packet Len: 422
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 408
 		Header Len (bytes): 20
 		TTL: 247
 		Protocol: UDP
-Checksum: Incorrect (0xbd56)
+		Checksum: Correct (0xbd56)
 		Sender IP: 206.13.29.12
 		Dest IP: 192.168.1.102
+
 	UDP Header
 		Source Port: DNS
 		Dest Port: 1300
@@ -67,14 +67,14 @@ Packet number: 4  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: ICMP
-Checksum: Incorrect (0x9bd3)
+		Checksum: Correct (0x9bd3)
 		Sender IP: 192.168.1.102
 		Dest IP: 69.226.92.47
+
 	ICMP Header
 		Type: Request
 
@@ -86,14 +86,14 @@ Packet number: 5  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 56
 		Protocol: ICMP
-Checksum: Incorrect (0x0d96)
+		Checksum: Correct (0x0d96)
 		Sender IP: 69.226.92.47
 		Dest IP: 192.168.1.102
+
 	ICMP Header
 		Type: Reply
 
@@ -105,14 +105,14 @@ Packet number: 6  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: ICMP
-Checksum: Incorrect (0x9bd2)
+		Checksum: Correct (0x9bd2)
 		Sender IP: 192.168.1.102
 		Dest IP: 69.226.92.47
+
 	ICMP Header
 		Type: Request
 
@@ -124,14 +124,14 @@ Packet number: 7  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 56
 		Protocol: ICMP
-Checksum: Incorrect (0x0d95)
+		Checksum: Correct (0x0d95)
 		Sender IP: 69.226.92.47
 		Dest IP: 192.168.1.102
+
 	ICMP Header
 		Type: Reply
 
@@ -143,14 +143,14 @@ Packet number: 8  Packet Len: 71
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 57
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: UDP
-Checksum: Incorrect (0x52bc)
+		Checksum: Correct (0x52bc)
 		Sender IP: 192.168.1.102
 		Dest IP: 206.13.29.12
+
 	UDP Header
 		Source Port: 1300
 		Dest Port: DNS
@@ -163,14 +163,14 @@ Packet number: 9  Packet Len: 253
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 239
 		Header Len (bytes): 20
 		TTL: 247
 		Protocol: UDP
-Checksum: Incorrect (0xb3b3)
+		Checksum: Correct (0xb3b3)
 		Sender IP: 206.13.29.12
 		Dest IP: 192.168.1.102
+
 	UDP Header
 		Source Port: DNS
 		Dest Port: 1300
@@ -183,14 +183,14 @@ Packet number: 10  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: ICMP
-Checksum: Incorrect (0xf131)
+		Checksum: Correct (0xf131)
 		Sender IP: 192.168.1.102
 		Dest IP: 199.181.132.250
+
 	ICMP Header
 		Type: Request
 
@@ -202,14 +202,14 @@ Packet number: 11  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 111
 		Protocol: ICMP
-Checksum: Incorrect (0x2145)
+		Checksum: Correct (0x2145)
 		Sender IP: 199.181.132.250
 		Dest IP: 192.168.1.102
+
 	ICMP Header
 		Type: Reply
 
@@ -221,14 +221,14 @@ Packet number: 12  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: ICMP
-Checksum: Incorrect (0xf130)
+		Checksum: Correct (0xf130)
 		Sender IP: 192.168.1.102
 		Dest IP: 199.181.132.250
+
 	ICMP Header
 		Type: Request
 
@@ -240,14 +240,14 @@ Packet number: 13  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 111
 		Protocol: ICMP
-Checksum: Incorrect (0x20fd)
+		Checksum: Correct (0x20fd)
 		Sender IP: 199.181.132.250
 		Dest IP: 192.168.1.102
+
 	ICMP Header
 		Type: Reply
 
@@ -259,14 +259,14 @@ Packet number: 14  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: ICMP
-Checksum: Incorrect (0xf12f)
+		Checksum: Correct (0xf12f)
 		Sender IP: 192.168.1.102
 		Dest IP: 199.181.132.250
+
 	ICMP Header
 		Type: Request
 
@@ -278,14 +278,14 @@ Packet number: 15  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 111
 		Protocol: ICMP
-Checksum: Incorrect (0x20bd)
+		Checksum: Correct (0x20bd)
 		Sender IP: 199.181.132.250
 		Dest IP: 192.168.1.102
+
 	ICMP Header
 		Type: Reply
 
@@ -297,14 +297,14 @@ Packet number: 16  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: ICMP
-Checksum: Incorrect (0xf12e)
+		Checksum: Correct (0xf12e)
 		Sender IP: 192.168.1.102
 		Dest IP: 199.181.132.250
+
 	ICMP Header
 		Type: Request
 
@@ -316,14 +316,14 @@ Packet number: 17  Packet Len: 74
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 60
 		Header Len (bytes): 20
 		TTL: 111
 		Protocol: ICMP
-Checksum: Incorrect (0x2086)
+		Checksum: Correct (0x2086)
 		Sender IP: 199.181.132.250
 		Dest IP: 192.168.1.102
+
 	ICMP Header
 		Type: Reply
 
@@ -335,14 +335,14 @@ Packet number: 18  Packet Len: 92
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 78
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: UDP
-Checksum: Incorrect (0xb9db)
+		Checksum: Correct (0xb9db)
 		Sender IP: 192.168.1.103
 		Dest IP: 192.168.1.255
+
 	UDP Header
 		Source Port: 137
 		Dest Port: 137
@@ -369,14 +369,14 @@ Packet number: 20  Packet Len: 84
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 70
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: UDP
-Checksum: Incorrect (0x52aa)
+		Checksum: Correct (0x52aa)
 		Sender IP: 192.168.1.102
 		Dest IP: 206.13.29.12
+
 	UDP Header
 		Source Port: 1300
 		Dest Port: DNS
@@ -389,14 +389,14 @@ Packet number: 21  Packet Len: 180
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 166
 		Header Len (bytes): 20
 		TTL: 247
 		Protocol: UDP
-Checksum: Incorrect (0xb107)
+		Checksum: Correct (0xb107)
 		Sender IP: 206.13.29.12
 		Dest IP: 192.168.1.102
+
 	UDP Header
 		Source Port: DNS
 		Dest Port: 1300
@@ -409,14 +409,14 @@ Packet number: 22  Packet Len: 62
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 48
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd557)
+		Checksum: Correct (0xd557)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 28
 		Source Port: 1663
@@ -428,7 +428,7 @@ Checksum: Incorrect (0xd557)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 16384
-Checksum: Incorrect (0x88ed)
+		Checksum: Correct (0x88ed)
 
 Packet number: 23  Packet Len: 60
 
@@ -438,14 +438,14 @@ Packet number: 23  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 44
 		Header Len (bytes): 20
 		TTL: 237
 		Protocol: TCP
-Checksum: Incorrect (0x3938)
+		Checksum: Correct (0x3938)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 24
 		Source Port: 2147
@@ -457,7 +457,7 @@ Checksum: Incorrect (0x3938)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 8192
-Checksum: Incorrect (0x2785)
+		Checksum: Correct (0x2785)
 
 Packet number: 24  Packet Len: 54
 
@@ -467,14 +467,14 @@ Packet number: 24  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd55e)
+		Checksum: Correct (0xd55e)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -486,7 +486,7 @@ Checksum: Incorrect (0xd55e)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x1b2a)
+		Checksum: Correct (0x1b2a)
 
 Packet number: 25  Packet Len: 144
 
@@ -496,14 +496,14 @@ Packet number: 25  Packet Len: 144
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 130
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd503)
+		Checksum: Correct (0xd503)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 110
 		Source Port: 1663
@@ -515,7 +515,7 @@ Checksum: Incorrect (0xd503)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x8318)
+		Checksum: Correct (0x8318)
 
 Packet number: 26  Packet Len: 60
 
@@ -525,14 +525,14 @@ Packet number: 26  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3dca)
+		Checksum: Correct (0x3dca)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -544,7 +544,7 @@ Checksum: Incorrect (0x3dca)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 5840
-Checksum: Incorrect (0x4810)
+		Checksum: Correct (0x4810)
 
 Packet number: 27  Packet Len: 992
 
@@ -554,14 +554,14 @@ Packet number: 27  Packet Len: 992
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 978
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3a1f)
+		Checksum: Correct (0x3a1f)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 958
 		Source Port: 2147
@@ -573,7 +573,7 @@ Checksum: Incorrect (0x3a1f)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 5840
-Checksum: Incorrect (0xb587)
+		Checksum: Correct (0xb587)
 
 Packet number: 28  Packet Len: 266
 
@@ -583,14 +583,14 @@ Packet number: 28  Packet Len: 266
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 252
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd488)
+		Checksum: Correct (0xd488)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 232
 		Source Port: 1663
@@ -602,7 +602,7 @@ Checksum: Incorrect (0xd488)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16486
-Checksum: Incorrect (0x3f9d)
+		Checksum: Correct (0x3f9d)
 
 Packet number: 29  Packet Len: 129
 
@@ -612,14 +612,14 @@ Packet number: 29  Packet Len: 129
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 115
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3d7d)
+		Checksum: Correct (0x3d7d)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 95
 		Source Port: 2147
@@ -631,7 +631,7 @@ Checksum: Incorrect (0x3d7d)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x46c8)
+		Checksum: Correct (0x46c8)
 
 Packet number: 30  Packet Len: 355
 
@@ -641,14 +641,14 @@ Packet number: 30  Packet Len: 355
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 341
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd42e)
+		Checksum: Correct (0xd42e)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 321
 		Source Port: 1663
@@ -660,7 +660,7 @@ Checksum: Incorrect (0xd42e)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16411
-Checksum: Incorrect (0x98e0)
+		Checksum: Correct (0x98e0)
 
 Packet number: 31  Packet Len: 560
 
@@ -670,14 +670,14 @@ Packet number: 31  Packet Len: 560
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 546
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3bcd)
+		Checksum: Correct (0x3bcd)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 526
 		Source Port: 2147
@@ -689,7 +689,7 @@ Checksum: Incorrect (0x3bcd)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x8800)
+		Checksum: Correct (0x8800)
 
 Packet number: 32  Packet Len: 139
 
@@ -699,14 +699,14 @@ Packet number: 32  Packet Len: 139
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 125
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd505)
+		Checksum: Correct (0xd505)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 105
 		Source Port: 1663
@@ -718,7 +718,7 @@ Checksum: Incorrect (0xd505)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x0391)
+		Checksum: Correct (0x0391)
 
 Packet number: 33  Packet Len: 1506
 
@@ -728,14 +728,14 @@ Packet number: 33  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x381a)
+		Checksum: Correct (0x381a)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: 2147
@@ -747,7 +747,7 @@ Checksum: Incorrect (0x381a)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xc07c)
+		Checksum: Correct (0xc07c)
 
 Packet number: 34  Packet Len: 1506
 
@@ -757,14 +757,14 @@ Packet number: 34  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3819)
+		Checksum: Correct (0x3819)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: 2147
@@ -776,7 +776,7 @@ Checksum: Incorrect (0x3819)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xc7ec)
+		Checksum: Correct (0xc7ec)
 
 Packet number: 35  Packet Len: 54
 
@@ -786,14 +786,14 @@ Packet number: 35  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd559)
+		Checksum: Correct (0xd559)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -805,7 +805,7 @@ Checksum: Incorrect (0xd559)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x0733)
+		Checksum: Correct (0x0733)
 
 Packet number: 36  Packet Len: 284
 
@@ -815,14 +815,14 @@ Packet number: 36  Packet Len: 284
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 270
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3cde)
+		Checksum: Correct (0x3cde)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 250
 		Source Port: 2147
@@ -834,7 +834,7 @@ Checksum: Incorrect (0x3cde)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x9e17)
+		Checksum: Correct (0x9e17)
 
 Packet number: 37  Packet Len: 163
 
@@ -844,14 +844,14 @@ Packet number: 37  Packet Len: 163
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 149
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4eb)
+		Checksum: Correct (0xd4eb)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 129
 		Source Port: 1663
@@ -863,7 +863,7 @@ Checksum: Incorrect (0xd4eb)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17194
-Checksum: Incorrect (0xd27b)
+		Checksum: Correct (0xd27b)
 
 Packet number: 38  Packet Len: 60
 
@@ -873,14 +873,14 @@ Packet number: 38  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3dc3)
+		Checksum: Correct (0x3dc3)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -892,7 +892,7 @@ Checksum: Incorrect (0x3dc3)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x2ca0)
+		Checksum: Correct (0x2ca0)
 
 Packet number: 39  Packet Len: 899
 
@@ -902,14 +902,14 @@ Packet number: 39  Packet Len: 899
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 885
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd20a)
+		Checksum: Correct (0xd20a)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 865
 		Source Port: 1663
@@ -921,7 +921,7 @@ Checksum: Incorrect (0xd20a)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17194
-Checksum: Incorrect (0x5e96)
+		Checksum: Correct (0x5e96)
 
 Packet number: 40  Packet Len: 60
 
@@ -931,14 +931,14 @@ Packet number: 40  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3dc2)
+		Checksum: Correct (0x3dc2)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -950,7 +950,7 @@ Checksum: Incorrect (0x3dc2)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x2254)
+		Checksum: Correct (0x2254)
 
 Packet number: 41  Packet Len: 176
 
@@ -960,14 +960,14 @@ Packet number: 41  Packet Len: 176
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 162
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3d47)
+		Checksum: Correct (0x3d47)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 142
 		Source Port: 2147
@@ -979,7 +979,7 @@ Checksum: Incorrect (0x3d47)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x3e8c)
+		Checksum: Correct (0x3e8c)
 
 Packet number: 42  Packet Len: 1506
 
@@ -989,14 +989,14 @@ Packet number: 42  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3814)
+		Checksum: Correct (0x3814)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: 2147
@@ -1008,7 +1008,7 @@ Checksum: Incorrect (0x3814)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xd760)
+		Checksum: Correct (0xd760)
 
 Packet number: 43  Packet Len: 54
 
@@ -1018,14 +1018,14 @@ Packet number: 43  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd556)
+		Checksum: Correct (0xd556)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -1037,7 +1037,7 @@ Checksum: Incorrect (0xd556)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xfc6c)
+		Checksum: Correct (0xfc6c)
 
 Packet number: 44  Packet Len: 1506
 
@@ -1047,14 +1047,14 @@ Packet number: 44  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3813)
+		Checksum: Correct (0x3813)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: 2147
@@ -1066,7 +1066,7 @@ Checksum: Incorrect (0x3813)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x9717)
+		Checksum: Correct (0x9717)
 
 Packet number: 45  Packet Len: 1506
 
@@ -1076,14 +1076,14 @@ Packet number: 45  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3812)
+		Checksum: Correct (0x3812)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: 2147
@@ -1095,7 +1095,7 @@ Checksum: Incorrect (0x3812)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x8214)
+		Checksum: Correct (0x8214)
 
 Packet number: 46  Packet Len: 54
 
@@ -1105,14 +1105,14 @@ Packet number: 46  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd555)
+		Checksum: Correct (0xd555)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -1124,7 +1124,7 @@ Checksum: Incorrect (0xd555)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xf114)
+		Checksum: Correct (0xf114)
 
 Packet number: 47  Packet Len: 1506
 
@@ -1134,14 +1134,14 @@ Packet number: 47  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3811)
+		Checksum: Correct (0x3811)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: 2147
@@ -1153,7 +1153,7 @@ Checksum: Incorrect (0x3811)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x1995)
+		Checksum: Correct (0x1995)
 
 Packet number: 48  Packet Len: 1506
 
@@ -1163,14 +1163,14 @@ Packet number: 48  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3810)
+		Checksum: Correct (0x3810)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: 2147
@@ -1182,7 +1182,7 @@ Checksum: Incorrect (0x3810)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x87f9)
+		Checksum: Correct (0x87f9)
 
 Packet number: 49  Packet Len: 54
 
@@ -1192,14 +1192,14 @@ Packet number: 49  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd554)
+		Checksum: Correct (0xd554)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -1211,7 +1211,7 @@ Checksum: Incorrect (0xd554)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xe5bc)
+		Checksum: Correct (0xe5bc)
 
 Packet number: 50  Packet Len: 820
 
@@ -1221,14 +1221,14 @@ Packet number: 50  Packet Len: 820
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 806
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3abd)
+		Checksum: Correct (0x3abd)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 786
 		Source Port: 2147
@@ -1240,7 +1240,7 @@ Checksum: Incorrect (0x3abd)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x1868)
+		Checksum: Correct (0x1868)
 
 Packet number: 51  Packet Len: 54
 
@@ -1250,14 +1250,14 @@ Packet number: 51  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd553)
+		Checksum: Correct (0xd553)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -1269,7 +1269,7 @@ Checksum: Incorrect (0xd553)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16658
-Checksum: Incorrect (0xe5bc)
+		Checksum: Correct (0xe5bc)
 
 Packet number: 52  Packet Len: 840
 
@@ -1279,14 +1279,14 @@ Packet number: 52  Packet Len: 840
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 826
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3aa8)
+		Checksum: Correct (0x3aa8)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 806
 		Source Port: 2147
@@ -1298,7 +1298,7 @@ Checksum: Incorrect (0x3aa8)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x8368)
+		Checksum: Correct (0x8368)
 
 Packet number: 53  Packet Len: 54
 
@@ -1308,14 +1308,14 @@ Packet number: 53  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd552)
+		Checksum: Correct (0xd552)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -1327,7 +1327,7 @@ Checksum: Incorrect (0xd552)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 15872
-Checksum: Incorrect (0xe5bc)
+		Checksum: Correct (0xe5bc)
 
 Packet number: 54  Packet Len: 139
 
@@ -1337,14 +1337,14 @@ Packet number: 54  Packet Len: 139
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 125
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4fc)
+		Checksum: Correct (0xd4fc)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 105
 		Source Port: 1663
@@ -1356,7 +1356,7 @@ Checksum: Incorrect (0xd4fc)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 15872
-Checksum: Incorrect (0x38b3)
+		Checksum: Correct (0x38b3)
 
 Packet number: 55  Packet Len: 60
 
@@ -1366,14 +1366,14 @@ Packet number: 55  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3db9)
+		Checksum: Correct (0x3db9)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -1385,7 +1385,7 @@ Checksum: Incorrect (0x3db9)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xff18)
+		Checksum: Correct (0xff18)
 
 Packet number: 56  Packet Len: 139
 
@@ -1395,14 +1395,14 @@ Packet number: 56  Packet Len: 139
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 125
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4fb)
+		Checksum: Correct (0xd4fb)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 105
 		Source Port: 1663
@@ -1414,7 +1414,7 @@ Checksum: Incorrect (0xd4fb)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 15872
-Checksum: Incorrect (0x741b)
+		Checksum: Correct (0x741b)
 
 Packet number: 57  Packet Len: 60
 
@@ -1424,14 +1424,14 @@ Packet number: 57  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3db8)
+		Checksum: Correct (0x3db8)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -1443,7 +1443,7 @@ Checksum: Incorrect (0x3db8)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xfec3)
+		Checksum: Correct (0xfec3)
 
 Packet number: 58  Packet Len: 139
 
@@ -1453,14 +1453,14 @@ Packet number: 58  Packet Len: 139
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 125
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4fa)
+		Checksum: Correct (0xd4fa)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 105
 		Source Port: 1663
@@ -1472,7 +1472,7 @@ Checksum: Incorrect (0xd4fa)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 15872
-Checksum: Incorrect (0x0f9e)
+		Checksum: Correct (0x0f9e)
 
 Packet number: 59  Packet Len: 60
 
@@ -1482,14 +1482,14 @@ Packet number: 59  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3db7)
+		Checksum: Correct (0x3db7)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -1501,7 +1501,7 @@ Checksum: Incorrect (0x3db7)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xfe6e)
+		Checksum: Correct (0xfe6e)
 
 Packet number: 60  Packet Len: 293
 
@@ -1511,14 +1511,14 @@ Packet number: 60  Packet Len: 293
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 279
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd45f)
+		Checksum: Correct (0xd45f)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 259
 		Source Port: 1663
@@ -1530,7 +1530,7 @@ Checksum: Incorrect (0xd45f)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 15872
-Checksum: Incorrect (0xf264)
+		Checksum: Correct (0xf264)
 
 Packet number: 61  Packet Len: 60
 
@@ -1540,14 +1540,14 @@ Packet number: 61  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3db6)
+		Checksum: Correct (0x3db6)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -1559,7 +1559,7 @@ Checksum: Incorrect (0x3db6)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xfd7f)
+		Checksum: Correct (0xfd7f)
 
 Packet number: 62  Packet Len: 176
 
@@ -1569,14 +1569,14 @@ Packet number: 62  Packet Len: 176
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 162
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3d3b)
+		Checksum: Correct (0x3d3b)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 142
 		Source Port: 2147
@@ -1588,7 +1588,7 @@ Checksum: Incorrect (0x3d3b)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x209c)
+		Checksum: Correct (0x209c)
 
 Packet number: 63  Packet Len: 54
 
@@ -1598,14 +1598,14 @@ Packet number: 63  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd54d)
+		Checksum: Correct (0xd54d)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -1617,7 +1617,7 @@ Checksum: Incorrect (0xd54d)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 15750
-Checksum: Incorrect (0xe3ce)
+		Checksum: Correct (0xe3ce)
 
 Packet number: 64  Packet Len: 600
 
@@ -1627,14 +1627,14 @@ Packet number: 64  Packet Len: 600
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 586
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3b92)
+		Checksum: Correct (0x3b92)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 566
 		Source Port: 2147
@@ -1646,7 +1646,7 @@ Checksum: Incorrect (0x3b92)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xb4c6)
+		Checksum: Correct (0xb4c6)
 
 Packet number: 65  Packet Len: 54
 
@@ -1656,14 +1656,14 @@ Packet number: 65  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd54c)
+		Checksum: Correct (0xd54c)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -1675,7 +1675,7 @@ Checksum: Incorrect (0xd54c)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 15204
-Checksum: Incorrect (0xe3ce)
+		Checksum: Correct (0xe3ce)
 
 Packet number: 66  Packet Len: 54
 
@@ -1685,14 +1685,14 @@ Packet number: 66  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd54b)
+		Checksum: Correct (0xd54b)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -1704,7 +1704,7 @@ Checksum: Incorrect (0xd54b)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xdb22)
+		Checksum: Correct (0xdb22)
 
 Packet number: 67  Packet Len: 139
 
@@ -1714,14 +1714,14 @@ Packet number: 67  Packet Len: 139
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 125
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4f5)
+		Checksum: Correct (0xd4f5)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 105
 		Source Port: 1663
@@ -1733,7 +1733,7 @@ Checksum: Incorrect (0xd4f5)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x44a4)
+		Checksum: Correct (0x44a4)
 
 Packet number: 68  Packet Len: 60
 
@@ -1743,14 +1743,14 @@ Packet number: 68  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3db3)
+		Checksum: Correct (0x3db3)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -1762,7 +1762,7 @@ Checksum: Incorrect (0x3db3)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xfa8e)
+		Checksum: Correct (0xfa8e)
 
 Packet number: 69  Packet Len: 139
 
@@ -1772,14 +1772,14 @@ Packet number: 69  Packet Len: 139
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 125
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4f4)
+		Checksum: Correct (0xd4f4)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 105
 		Source Port: 1663
@@ -1791,7 +1791,7 @@ Checksum: Incorrect (0xd4f4)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x7365)
+		Checksum: Correct (0x7365)
 
 Packet number: 70  Packet Len: 60
 
@@ -1801,14 +1801,14 @@ Packet number: 70  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3db2)
+		Checksum: Correct (0x3db2)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -1820,7 +1820,7 @@ Checksum: Incorrect (0x3db2)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xfa39)
+		Checksum: Correct (0xfa39)
 
 Packet number: 71  Packet Len: 832
 
@@ -1830,14 +1830,14 @@ Packet number: 71  Packet Len: 832
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 818
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3aa7)
+		Checksum: Correct (0x3aa7)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 798
 		Source Port: 2147
@@ -1849,7 +1849,7 @@ Checksum: Incorrect (0x3aa7)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xf873)
+		Checksum: Correct (0xf873)
 
 Packet number: 72  Packet Len: 54
 
@@ -1859,14 +1859,14 @@ Packet number: 72  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd548)
+		Checksum: Correct (0xd548)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -1878,7 +1878,7 @@ Checksum: Incorrect (0xd548)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16646
-Checksum: Incorrect (0xda78)
+		Checksum: Correct (0xda78)
 
 Packet number: 73  Packet Len: 131
 
@@ -1888,14 +1888,14 @@ Packet number: 73  Packet Len: 131
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 117
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4fa)
+		Checksum: Correct (0xd4fa)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 97
 		Source Port: 1663
@@ -1907,7 +1907,7 @@ Checksum: Incorrect (0xd4fa)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16646
-Checksum: Incorrect (0x99bc)
+		Checksum: Correct (0x99bc)
 
 Packet number: 74  Packet Len: 60
 
@@ -1917,14 +1917,14 @@ Packet number: 74  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3db0)
+		Checksum: Correct (0x3db0)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -1936,7 +1936,7 @@ Checksum: Incorrect (0x3db0)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xf6e2)
+		Checksum: Correct (0xf6e2)
 
 Packet number: 75  Packet Len: 79
 
@@ -1946,14 +1946,14 @@ Packet number: 75  Packet Len: 79
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 65
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: UDP
-Checksum: Incorrect (0x5295)
+		Checksum: Correct (0x5295)
 		Sender IP: 192.168.1.102
 		Dest IP: 206.13.29.12
+
 	UDP Header
 		Source Port: 1300
 		Dest Port: DNS
@@ -1966,14 +1966,14 @@ Packet number: 76  Packet Len: 175
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 161
 		Header Len (bytes): 20
 		TTL: 247
 		Protocol: UDP
-Checksum: Incorrect (0xa2e0)
+		Checksum: Correct (0xa2e0)
 		Sender IP: 206.13.29.12
 		Dest IP: 192.168.1.102
+
 	UDP Header
 		Source Port: DNS
 		Dest Port: 1300
@@ -1986,14 +1986,14 @@ Packet number: 77  Packet Len: 62
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 48
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c97)
+		Checksum: Correct (0x0c97)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 28
 		Source Port: 1665
@@ -2005,7 +2005,7 @@ Checksum: Incorrect (0x0c97)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 16384
-Checksum: Incorrect (0x05a8)
+		Checksum: Correct (0x05a8)
 
 Packet number: 78  Packet Len: 62
 
@@ -2015,14 +2015,14 @@ Packet number: 78  Packet Len: 62
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 48
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x9c87)
+		Checksum: Correct (0x9c87)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 28
 		Source Port: HTTP
@@ -2034,7 +2034,7 @@ Checksum: Incorrect (0x9c87)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 5840
-Checksum: Incorrect (0xc477)
+		Checksum: Correct (0xc477)
 
 Packet number: 79  Packet Len: 54
 
@@ -2044,14 +2044,14 @@ Packet number: 79  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c9d)
+		Checksum: Correct (0x0c9d)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2063,7 +2063,7 @@ Checksum: Incorrect (0x0c9d)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xc3f3)
+		Checksum: Correct (0xc3f3)
 
 Packet number: 80  Packet Len: 382
 
@@ -2073,14 +2073,14 @@ Packet number: 80  Packet Len: 382
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 368
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0b54)
+		Checksum: Correct (0x0b54)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 348
 		Source Port: 1665
@@ -2092,7 +2092,7 @@ Checksum: Incorrect (0x0b54)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xa038)
+		Checksum: Correct (0xa038)
 
 Packet number: 81  Packet Len: 60
 
@@ -2102,14 +2102,14 @@ Packet number: 81  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x66c0)
+		Checksum: Correct (0x66c0)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: HTTP
@@ -2121,7 +2121,7 @@ Checksum: Incorrect (0x66c0)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0xed9b)
+		Checksum: Correct (0xed9b)
 
 Packet number: 82  Packet Len: 1506
 
@@ -2131,14 +2131,14 @@ Packet number: 82  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x6113)
+		Checksum: Correct (0x6113)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2150,7 +2150,7 @@ Checksum: Incorrect (0x6113)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x1728)
+		Checksum: Correct (0x1728)
 
 Packet number: 83  Packet Len: 854
 
@@ -2160,14 +2160,14 @@ Packet number: 83  Packet Len: 854
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 840
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x639e)
+		Checksum: Correct (0x639e)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 820
 		Source Port: HTTP
@@ -2179,7 +2179,7 @@ Checksum: Incorrect (0x639e)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x15bf)
+		Checksum: Correct (0x15bf)
 
 Packet number: 84  Packet Len: 54
 
@@ -2189,14 +2189,14 @@ Packet number: 84  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c9a)
+		Checksum: Correct (0x0c9a)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2208,7 +2208,7 @@ Checksum: Incorrect (0x0c9a)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xb9df)
+		Checksum: Correct (0xb9df)
 
 Packet number: 85  Packet Len: 583
 
@@ -2218,14 +2218,14 @@ Packet number: 85  Packet Len: 583
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 569
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0a88)
+		Checksum: Correct (0x0a88)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 549
 		Source Port: 1665
@@ -2237,7 +2237,7 @@ Checksum: Incorrect (0x0a88)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xf180)
+		Checksum: Correct (0xf180)
 
 Packet number: 86  Packet Len: 62
 
@@ -2247,14 +2247,14 @@ Packet number: 86  Packet Len: 62
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 48
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c8f)
+		Checksum: Correct (0x0c8f)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 28
 		Source Port: 1666
@@ -2266,7 +2266,7 @@ Checksum: Incorrect (0x0c8f)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 16384
-Checksum: Incorrect (0x72c4)
+		Checksum: Correct (0x72c4)
 
 Packet number: 87  Packet Len: 1506
 
@@ -2276,14 +2276,14 @@ Packet number: 87  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x6111)
+		Checksum: Correct (0x6111)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2295,7 +2295,7 @@ Checksum: Incorrect (0x6111)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x8719)
+		Checksum: Correct (0x8719)
 
 Packet number: 88  Packet Len: 1506
 
@@ -2305,14 +2305,14 @@ Packet number: 88  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x6110)
+		Checksum: Correct (0x6110)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2324,7 +2324,7 @@ Checksum: Incorrect (0x6110)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x11ba)
+		Checksum: Correct (0x11ba)
 
 Packet number: 89  Packet Len: 54
 
@@ -2334,14 +2334,14 @@ Packet number: 89  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c95)
+		Checksum: Correct (0x0c95)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2353,7 +2353,7 @@ Checksum: Incorrect (0x0c95)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xac76)
+		Checksum: Correct (0xac76)
 
 Packet number: 90  Packet Len: 1506
 
@@ -2363,14 +2363,14 @@ Packet number: 90  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x610f)
+		Checksum: Correct (0x610f)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2382,7 +2382,7 @@ Checksum: Incorrect (0x610f)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xe62f)
+		Checksum: Correct (0xe62f)
 
 Packet number: 91  Packet Len: 54
 
@@ -2392,14 +2392,14 @@ Packet number: 91  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c94)
+		Checksum: Correct (0x0c94)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2411,7 +2411,7 @@ Checksum: Incorrect (0x0c94)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xa6ca)
+		Checksum: Correct (0xa6ca)
 
 Packet number: 92  Packet Len: 62
 
@@ -2421,14 +2421,14 @@ Packet number: 92  Packet Len: 62
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 48
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x9c87)
+		Checksum: Correct (0x9c87)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 28
 		Source Port: HTTP
@@ -2440,7 +2440,7 @@ Checksum: Incorrect (0x9c87)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 5840
-Checksum: Incorrect (0x0115)
+		Checksum: Correct (0x0115)
 
 Packet number: 93  Packet Len: 54
 
@@ -2450,14 +2450,14 @@ Packet number: 93  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c93)
+		Checksum: Correct (0x0c93)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1666
@@ -2469,7 +2469,7 @@ Checksum: Incorrect (0x0c93)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x0091)
+		Checksum: Correct (0x0091)
 
 Packet number: 94  Packet Len: 54
 
@@ -2479,14 +2479,14 @@ Packet number: 94  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c92)
+		Checksum: Correct (0x0c92)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2498,7 +2498,7 @@ Checksum: Incorrect (0x0c92)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xd437)
+		Checksum: Correct (0xd437)
 
 Packet number: 95  Packet Len: 584
 
@@ -2508,14 +2508,14 @@ Packet number: 95  Packet Len: 584
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 570
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0a7f)
+		Checksum: Correct (0x0a7f)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 550
 		Source Port: 1666
@@ -2527,7 +2527,7 @@ Checksum: Incorrect (0x0a7f)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x461d)
+		Checksum: Correct (0x461d)
 
 Packet number: 96  Packet Len: 62
 
@@ -2537,14 +2537,14 @@ Packet number: 96  Packet Len: 62
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 48
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c87)
+		Checksum: Correct (0x0c87)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 28
 		Source Port: 1667
@@ -2556,7 +2556,7 @@ Checksum: Incorrect (0x0c87)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 16384
-Checksum: Incorrect (0x1228)
+		Checksum: Correct (0x1228)
 
 Packet number: 97  Packet Len: 1506
 
@@ -2566,14 +2566,14 @@ Packet number: 97  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x610e)
+		Checksum: Correct (0x610e)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2585,7 +2585,7 @@ Checksum: Incorrect (0x610e)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x4706)
+		Checksum: Correct (0x4706)
 
 Packet number: 98  Packet Len: 54
 
@@ -2595,14 +2595,14 @@ Packet number: 98  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c8d)
+		Checksum: Correct (0x4c8d)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2614,7 +2614,7 @@ Checksum: Incorrect (0x4c8d)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xe84f)
+		Checksum: Correct (0xe84f)
 
 Packet number: 99  Packet Len: 1506
 
@@ -2624,14 +2624,14 @@ Packet number: 99  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x610d)
+		Checksum: Correct (0x610d)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2643,7 +2643,7 @@ Checksum: Incorrect (0x610d)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xea20)
+		Checksum: Correct (0xea20)
 
 Packet number: 100  Packet Len: 54
 
@@ -2653,14 +2653,14 @@ Packet number: 100  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c8c)
+		Checksum: Correct (0x4c8c)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2672,7 +2672,7 @@ Checksum: Incorrect (0x4c8c)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xe84f)
+		Checksum: Correct (0xe84f)
 
 Packet number: 101  Packet Len: 1506
 
@@ -2682,14 +2682,14 @@ Packet number: 101  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x610c)
+		Checksum: Correct (0x610c)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2701,7 +2701,7 @@ Checksum: Incorrect (0x610c)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xd7c8)
+		Checksum: Correct (0xd7c8)
 
 Packet number: 102  Packet Len: 54
 
@@ -2711,14 +2711,14 @@ Packet number: 102  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c8b)
+		Checksum: Correct (0x4c8b)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2730,7 +2730,7 @@ Checksum: Incorrect (0x4c8b)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xe84f)
+		Checksum: Correct (0xe84f)
 
 Packet number: 103  Packet Len: 326
 
@@ -2740,14 +2740,14 @@ Packet number: 103  Packet Len: 326
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 312
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x65a6)
+		Checksum: Correct (0x65a6)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 292
 		Source Port: HTTP
@@ -2759,7 +2759,7 @@ Checksum: Incorrect (0x65a6)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x21a3)
+		Checksum: Correct (0x21a3)
 
 Packet number: 104  Packet Len: 54
 
@@ -2769,14 +2769,14 @@ Packet number: 104  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c8a)
+		Checksum: Correct (0x4c8a)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2788,7 +2788,7 @@ Checksum: Incorrect (0x4c8a)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xe84f)
+		Checksum: Correct (0xe84f)
 
 Packet number: 105  Packet Len: 1506
 
@@ -2798,14 +2798,14 @@ Packet number: 105  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x610b)
+		Checksum: Correct (0x610b)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2817,7 +2817,7 @@ Checksum: Incorrect (0x610b)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xde9d)
+		Checksum: Correct (0xde9d)
 
 Packet number: 106  Packet Len: 54
 
@@ -2827,14 +2827,14 @@ Packet number: 106  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c89)
+		Checksum: Correct (0x4c89)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1665
@@ -2846,7 +2846,7 @@ Checksum: Incorrect (0x4c89)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xe84f)
+		Checksum: Correct (0xe84f)
 
 Packet number: 107  Packet Len: 60
 
@@ -2856,14 +2856,14 @@ Packet number: 107  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x446b)
+		Checksum: Correct (0x446b)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: HTTP
@@ -2875,7 +2875,7 @@ Checksum: Incorrect (0x446b)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x296f)
+		Checksum: Correct (0x296f)
 
 Packet number: 108  Packet Len: 1506
 
@@ -2885,14 +2885,14 @@ Packet number: 108  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x3ebe)
+		Checksum: Correct (0x3ebe)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2904,7 +2904,7 @@ Checksum: Incorrect (0x3ebe)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0xd6d5)
+		Checksum: Correct (0xd6d5)
 
 Packet number: 109  Packet Len: 1506
 
@@ -2914,14 +2914,14 @@ Packet number: 109  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x3ebd)
+		Checksum: Correct (0x3ebd)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -2933,7 +2933,7 @@ Checksum: Incorrect (0x3ebd)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x15c8)
+		Checksum: Correct (0x15c8)
 
 Packet number: 110  Packet Len: 54
 
@@ -2943,14 +2943,14 @@ Packet number: 110  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c88)
+		Checksum: Correct (0x0c88)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1666
@@ -2962,7 +2962,7 @@ Checksum: Incorrect (0x0c88)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xf326)
+		Checksum: Correct (0xf326)
 
 Packet number: 111  Packet Len: 62
 
@@ -2972,14 +2972,14 @@ Packet number: 111  Packet Len: 62
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 48
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x9c87)
+		Checksum: Correct (0x9c87)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 28
 		Source Port: HTTP
@@ -2991,7 +2991,7 @@ Checksum: Incorrect (0x9c87)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 5840
-Checksum: Incorrect (0xf6cf)
+		Checksum: Correct (0xf6cf)
 
 Packet number: 112  Packet Len: 54
 
@@ -3001,14 +3001,14 @@ Packet number: 112  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c87)
+		Checksum: Correct (0x0c87)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1667
@@ -3020,7 +3020,7 @@ Checksum: Incorrect (0x0c87)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xf64b)
+		Checksum: Correct (0xf64b)
 
 Packet number: 113  Packet Len: 579
 
@@ -3030,14 +3030,14 @@ Packet number: 113  Packet Len: 579
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 565
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0a79)
+		Checksum: Correct (0x0a79)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 545
 		Source Port: 1667
@@ -3049,7 +3049,7 @@ Checksum: Incorrect (0x0a79)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x365c)
+		Checksum: Correct (0x365c)
 
 Packet number: 114  Packet Len: 1506
 
@@ -3059,14 +3059,14 @@ Packet number: 114  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x3ebc)
+		Checksum: Correct (0x3ebc)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -3078,7 +3078,7 @@ Checksum: Incorrect (0x3ebc)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x6ed0)
+		Checksum: Correct (0x6ed0)
 
 Packet number: 115  Packet Len: 54
 
@@ -3088,14 +3088,14 @@ Packet number: 115  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c84)
+		Checksum: Correct (0x0c84)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1666
@@ -3107,7 +3107,7 @@ Checksum: Incorrect (0x0c84)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xed7a)
+		Checksum: Correct (0xed7a)
 
 Packet number: 116  Packet Len: 54
 
@@ -3117,14 +3117,14 @@ Packet number: 116  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c83)
+		Checksum: Correct (0x0c83)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1666
@@ -3136,7 +3136,7 @@ Checksum: Incorrect (0x0c83)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0x3197)
+		Checksum: Correct (0x3197)
 
 Packet number: 117  Packet Len: 1043
 
@@ -3146,14 +3146,14 @@ Packet number: 117  Packet Len: 1043
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1029
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x408a)
+		Checksum: Correct (0x408a)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1009
 		Source Port: HTTP
@@ -3165,7 +3165,7 @@ Checksum: Incorrect (0x408a)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x73c7)
+		Checksum: Correct (0x73c7)
 
 Packet number: 118  Packet Len: 54
 
@@ -3175,14 +3175,14 @@ Packet number: 118  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c82)
+		Checksum: Correct (0x4c82)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1666
@@ -3194,7 +3194,7 @@ Checksum: Incorrect (0x4c82)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xc517)
+		Checksum: Correct (0xc517)
 
 Packet number: 119  Packet Len: 60
 
@@ -3204,14 +3204,14 @@ Packet number: 119  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xab39)
+		Checksum: Correct (0xab39)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: HTTP
@@ -3223,7 +3223,7 @@ Checksum: Incorrect (0xab39)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x1f2f)
+		Checksum: Correct (0x1f2f)
 
 Packet number: 120  Packet Len: 239
 
@@ -3233,14 +3233,14 @@ Packet number: 120  Packet Len: 239
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 225
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xaa7f)
+		Checksum: Correct (0xaa7f)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 205
 		Source Port: HTTP
@@ -3252,7 +3252,7 @@ Checksum: Incorrect (0xaa7f)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x6a7e)
+		Checksum: Correct (0x6a7e)
 
 Packet number: 121  Packet Len: 62
 
@@ -3262,14 +3262,14 @@ Packet number: 121  Packet Len: 62
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 48
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c79)
+		Checksum: Correct (0x0c79)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 28
 		Source Port: 1668
@@ -3281,7 +3281,7 @@ Checksum: Incorrect (0x0c79)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 16384
-Checksum: Incorrect (0x54aa)
+		Checksum: Correct (0x54aa)
 
 Packet number: 122  Packet Len: 580
 
@@ -3291,14 +3291,14 @@ Packet number: 122  Packet Len: 580
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 566
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0a71)
+		Checksum: Correct (0x0a71)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 546
 		Source Port: 1667
@@ -3310,7 +3310,7 @@ Checksum: Incorrect (0x0a71)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17239
-Checksum: Incorrect (0x71a3)
+		Checksum: Correct (0x71a3)
 
 Packet number: 123  Packet Len: 62
 
@@ -3320,14 +3320,14 @@ Packet number: 123  Packet Len: 62
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 48
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0x9c87)
+		Checksum: Correct (0x9c87)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 28
 		Source Port: HTTP
@@ -3339,7 +3339,7 @@ Checksum: Incorrect (0x9c87)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 5840
-Checksum: Incorrect (0x098d)
+		Checksum: Correct (0x098d)
 
 Packet number: 124  Packet Len: 54
 
@@ -3349,14 +3349,14 @@ Packet number: 124  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c7d)
+		Checksum: Correct (0x0c7d)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1668
@@ -3368,7 +3368,7 @@ Checksum: Incorrect (0x0c7d)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x0909)
+		Checksum: Correct (0x0909)
 
 Packet number: 125  Packet Len: 580
 
@@ -3378,14 +3378,14 @@ Packet number: 125  Packet Len: 580
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 566
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0a6e)
+		Checksum: Correct (0x0a6e)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 546
 		Source Port: 1668
@@ -3397,7 +3397,7 @@ Checksum: Incorrect (0x0a6e)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x08e1)
+		Checksum: Correct (0x08e1)
 
 Packet number: 126  Packet Len: 1506
 
@@ -3407,14 +3407,14 @@ Packet number: 126  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xa58b)
+		Checksum: Correct (0xa58b)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -3426,7 +3426,7 @@ Checksum: Incorrect (0xa58b)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x97d1)
+		Checksum: Correct (0x97d1)
 
 Packet number: 127  Packet Len: 1506
 
@@ -3436,14 +3436,14 @@ Packet number: 127  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xa58a)
+		Checksum: Correct (0xa58a)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -3455,7 +3455,7 @@ Checksum: Incorrect (0xa58a)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xbcea)
+		Checksum: Correct (0xbcea)
 
 Packet number: 128  Packet Len: 54
 
@@ -3465,14 +3465,14 @@ Packet number: 128  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c7a)
+		Checksum: Correct (0x0c7a)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1667
@@ -3484,7 +3484,7 @@ Checksum: Incorrect (0x0c7a)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xe61f)
+		Checksum: Correct (0xe61f)
 
 Packet number: 129  Packet Len: 60
 
@@ -3494,14 +3494,14 @@ Packet number: 129  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xca5c)
+		Checksum: Correct (0xca5c)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: HTTP
@@ -3513,7 +3513,7 @@ Checksum: Incorrect (0xca5c)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x31eb)
+		Checksum: Correct (0x31eb)
 
 Packet number: 130  Packet Len: 268
 
@@ -3523,14 +3523,14 @@ Packet number: 130  Packet Len: 268
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 254
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xc984)
+		Checksum: Correct (0xc984)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 234
 		Source Port: HTTP
@@ -3542,7 +3542,7 @@ Checksum: Incorrect (0xc984)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0x8c34)
+		Checksum: Correct (0x8c34)
 
 Packet number: 131  Packet Len: 66
 
@@ -3552,14 +3552,14 @@ Packet number: 131  Packet Len: 66
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 52
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c6d)
+		Checksum: Correct (0x0c6d)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 32
 		Source Port: 1668
@@ -3571,7 +3571,7 @@ Checksum: Incorrect (0x0c6d)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xdc2a)
+		Checksum: Correct (0xdc2a)
 
 Packet number: 132  Packet Len: 1506
 
@@ -3581,14 +3581,14 @@ Packet number: 132  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xc4af)
+		Checksum: Correct (0xc4af)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -3600,7 +3600,7 @@ Checksum: Incorrect (0xc4af)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 6432
-Checksum: Incorrect (0xf008)
+		Checksum: Correct (0xf008)
 
 Packet number: 133  Packet Len: 54
 
@@ -3610,14 +3610,14 @@ Packet number: 133  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c78)
+		Checksum: Correct (0x0c78)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1668
@@ -3629,7 +3629,7 @@ Checksum: Incorrect (0x0c78)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x0079)
+		Checksum: Correct (0x0079)
 
 Packet number: 134  Packet Len: 54
 
@@ -3639,14 +3639,14 @@ Packet number: 134  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c77)
+		Checksum: Correct (0x0c77)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1668
@@ -3658,7 +3658,7 @@ Checksum: Incorrect (0x0c77)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0x4495)
+		Checksum: Correct (0x4495)
 
 Packet number: 135  Packet Len: 1506
 
@@ -3668,14 +3668,14 @@ Packet number: 135  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xa589)
+		Checksum: Correct (0xa589)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -3687,7 +3687,7 @@ Checksum: Incorrect (0xa589)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xb31d)
+		Checksum: Correct (0xb31d)
 
 Packet number: 136  Packet Len: 54
 
@@ -3697,14 +3697,14 @@ Packet number: 136  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c76)
+		Checksum: Correct (0x0c76)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1667
@@ -3716,7 +3716,7 @@ Checksum: Incorrect (0x0c76)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xe073)
+		Checksum: Correct (0xe073)
 
 Packet number: 137  Packet Len: 54
 
@@ -3726,14 +3726,14 @@ Packet number: 137  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x0c75)
+		Checksum: Correct (0x0c75)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1667
@@ -3745,7 +3745,7 @@ Checksum: Incorrect (0x0c75)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0x2490)
+		Checksum: Correct (0x2490)
 
 Packet number: 138  Packet Len: 1506
 
@@ -3755,14 +3755,14 @@ Packet number: 138  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xa588)
+		Checksum: Correct (0xa588)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -3774,7 +3774,7 @@ Checksum: Incorrect (0xa588)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x2038)
+		Checksum: Correct (0x2038)
 
 Packet number: 139  Packet Len: 54
 
@@ -3784,14 +3784,14 @@ Packet number: 139  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c74)
+		Checksum: Correct (0x4c74)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1667
@@ -3803,7 +3803,7 @@ Checksum: Incorrect (0x4c74)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xffcd)
+		Checksum: Correct (0xffcd)
 
 Packet number: 140  Packet Len: 1506
 
@@ -3813,14 +3813,14 @@ Packet number: 140  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xa587)
+		Checksum: Correct (0xa587)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -3832,7 +3832,7 @@ Checksum: Incorrect (0xa587)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xff5e)
+		Checksum: Correct (0xff5e)
 
 Packet number: 141  Packet Len: 54
 
@@ -3842,14 +3842,14 @@ Packet number: 141  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c73)
+		Checksum: Correct (0x4c73)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1667
@@ -3861,7 +3861,7 @@ Checksum: Incorrect (0x4c73)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xffcd)
+		Checksum: Correct (0xffcd)
 
 Packet number: 142  Packet Len: 1506
 
@@ -3871,14 +3871,14 @@ Packet number: 142  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xa586)
+		Checksum: Correct (0xa586)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -3890,7 +3890,7 @@ Checksum: Incorrect (0xa586)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0x9b60)
+		Checksum: Correct (0x9b60)
 
 Packet number: 143  Packet Len: 54
 
@@ -3900,14 +3900,14 @@ Packet number: 143  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c72)
+		Checksum: Correct (0x4c72)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1667
@@ -3919,7 +3919,7 @@ Checksum: Incorrect (0x4c72)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xffcd)
+		Checksum: Correct (0xffcd)
 
 Packet number: 144  Packet Len: 1506
 
@@ -3929,14 +3929,14 @@ Packet number: 144  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 43
 		Protocol: TCP
-Checksum: Incorrect (0xa585)
+		Checksum: Correct (0xa585)
 		Sender IP: 195.10.46.40
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: HTTP
@@ -3948,7 +3948,7 @@ Checksum: Incorrect (0xa585)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 7504
-Checksum: Incorrect (0xd397)
+		Checksum: Correct (0xd397)
 
 Packet number: 145  Packet Len: 54
 
@@ -3958,14 +3958,14 @@ Packet number: 145  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0x4c71)
+		Checksum: Correct (0x4c71)
 		Sender IP: 192.168.1.102
 		Dest IP: 195.10.46.40
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1667
@@ -3977,7 +3977,7 @@ Checksum: Incorrect (0x4c71)
 		FIN Flag: No
 		ACK Flag: No
 		Window Size: 0
-Checksum: Incorrect (0xffcd)
+		Checksum: Correct (0xffcd)
 
 Packet number: 146  Packet Len: 131
 
@@ -3987,14 +3987,14 @@ Packet number: 146  Packet Len: 131
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 117
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4c9)
+		Checksum: Correct (0xd4c9)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 97
 		Source Port: 1663
@@ -4006,7 +4006,7 @@ Checksum: Incorrect (0xd4c9)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16646
-Checksum: Incorrect (0x28e7)
+		Checksum: Correct (0x28e7)
 
 Packet number: 147  Packet Len: 60
 
@@ -4016,14 +4016,14 @@ Packet number: 147  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3daf)
+		Checksum: Correct (0x3daf)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -4035,7 +4035,7 @@ Checksum: Incorrect (0x3daf)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xf695)
+		Checksum: Correct (0xf695)
 
 Packet number: 148  Packet Len: 147
 
@@ -4045,14 +4045,14 @@ Packet number: 148  Packet Len: 147
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 133
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4b8)
+		Checksum: Correct (0xd4b8)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 113
 		Source Port: 1663
@@ -4064,7 +4064,7 @@ Checksum: Incorrect (0xd4b8)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16646
-Checksum: Incorrect (0xca8b)
+		Checksum: Correct (0xca8b)
 
 Packet number: 149  Packet Len: 60
 
@@ -4074,14 +4074,14 @@ Packet number: 149  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3dae)
+		Checksum: Correct (0x3dae)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -4093,7 +4093,7 @@ Checksum: Incorrect (0x3dae)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xf638)
+		Checksum: Correct (0xf638)
 
 Packet number: 150  Packet Len: 1506
 
@@ -4103,14 +4103,14 @@ Packet number: 150  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3801)
+		Checksum: Correct (0x3801)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: 2147
@@ -4122,7 +4122,7 @@ Checksum: Incorrect (0x3801)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x4607)
+		Checksum: Correct (0x4607)
 
 Packet number: 151  Packet Len: 1506
 
@@ -4132,14 +4132,14 @@ Packet number: 151  Packet Len: 1506
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1492
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3800)
+		Checksum: Correct (0x3800)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1472
 		Source Port: 2147
@@ -4151,7 +4151,7 @@ Checksum: Incorrect (0x3800)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xb915)
+		Checksum: Correct (0xb915)
 
 Packet number: 152  Packet Len: 54
 
@@ -4161,14 +4161,14 @@ Packet number: 152  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd514)
+		Checksum: Correct (0xd514)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -4180,7 +4180,7 @@ Checksum: Incorrect (0xd514)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xcb1f)
+		Checksum: Correct (0xcb1f)
 
 Packet number: 153  Packet Len: 688
 
@@ -4190,14 +4190,14 @@ Packet number: 153  Packet Len: 688
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 674
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3b31)
+		Checksum: Correct (0x3b31)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 654
 		Source Port: 2147
@@ -4209,7 +4209,7 @@ Checksum: Incorrect (0x3b31)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xe844)
+		Checksum: Correct (0xe844)
 
 Packet number: 154  Packet Len: 54
 
@@ -4219,14 +4219,14 @@ Packet number: 154  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd513)
+		Checksum: Correct (0xd513)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -4238,7 +4238,7 @@ Checksum: Incorrect (0xd513)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16790
-Checksum: Incorrect (0xcb1f)
+		Checksum: Correct (0xcb1f)
 
 Packet number: 155  Packet Len: 296
 
@@ -4248,14 +4248,14 @@ Packet number: 155  Packet Len: 296
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 282
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3cb8)
+		Checksum: Correct (0x3cb8)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 262
 		Source Port: 2147
@@ -4267,7 +4267,7 @@ Checksum: Incorrect (0x3cb8)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x91d9)
+		Checksum: Correct (0x91d9)
 
 Packet number: 156  Packet Len: 131
 
@@ -4277,14 +4277,14 @@ Packet number: 156  Packet Len: 131
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 117
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4c5)
+		Checksum: Correct (0xd4c5)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 97
 		Source Port: 1663
@@ -4296,7 +4296,7 @@ Checksum: Incorrect (0xd4c5)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16548
-Checksum: Incorrect (0x9308)
+		Checksum: Correct (0x9308)
 
 Packet number: 157  Packet Len: 60
 
@@ -4306,14 +4306,14 @@ Packet number: 157  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3da9)
+		Checksum: Correct (0x3da9)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -4325,7 +4325,7 @@ Checksum: Incorrect (0x3da9)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0xe727)
+		Checksum: Correct (0xe727)
 
 Packet number: 158  Packet Len: 208
 
@@ -4335,14 +4335,14 @@ Packet number: 158  Packet Len: 208
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 194
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd477)
+		Checksum: Correct (0xd477)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 174
 		Source Port: 1663
@@ -4354,7 +4354,7 @@ Checksum: Incorrect (0xd477)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16548
-Checksum: Incorrect (0x6474)
+		Checksum: Correct (0x6474)
 
 Packet number: 159  Packet Len: 264
 
@@ -4364,14 +4364,14 @@ Packet number: 159  Packet Len: 264
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 250
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3cd6)
+		Checksum: Correct (0x3cd6)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 230
 		Source Port: 2147
@@ -4383,7 +4383,7 @@ Checksum: Incorrect (0x3cd6)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 9295
-Checksum: Incorrect (0x8aa5)
+		Checksum: Correct (0x8aa5)
 
 Packet number: 160  Packet Len: 60
 
@@ -4393,14 +4393,14 @@ Packet number: 160  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3da7)
+		Checksum: Correct (0x3da7)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -4412,7 +4412,7 @@ Checksum: Incorrect (0x3da7)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 10985
-Checksum: Incorrect (0xdf21)
+		Checksum: Correct (0xdf21)
 
 Packet number: 161  Packet Len: 240
 
@@ -4422,14 +4422,14 @@ Packet number: 161  Packet Len: 240
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 226
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd456)
+		Checksum: Correct (0xd456)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 206
 		Source Port: 1663
@@ -4441,7 +4441,7 @@ Checksum: Incorrect (0xd456)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 16338
-Checksum: Incorrect (0xba9d)
+		Checksum: Correct (0xba9d)
 
 Packet number: 162  Packet Len: 1200
 
@@ -4451,14 +4451,14 @@ Packet number: 162  Packet Len: 1200
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 1186
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x392c)
+		Checksum: Correct (0x392c)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 1166
 		Source Port: 2147
@@ -4470,7 +4470,7 @@ Checksum: Incorrect (0x392c)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 12675
-Checksum: Incorrect (0x4538)
+		Checksum: Correct (0x4538)
 
 Packet number: 163  Packet Len: 54
 
@@ -4480,14 +4480,14 @@ Packet number: 163  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd50f)
+		Checksum: Correct (0xd50f)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -4499,7 +4499,7 @@ Checksum: Incorrect (0xd50f)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xc0c6)
+		Checksum: Correct (0xc0c6)
 
 Packet number: 164  Packet Len: 147
 
@@ -4509,14 +4509,14 @@ Packet number: 164  Packet Len: 147
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 133
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4b1)
+		Checksum: Correct (0xd4b1)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 113
 		Source Port: 1663
@@ -4528,7 +4528,7 @@ Checksum: Incorrect (0xd4b1)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xc7a8)
+		Checksum: Correct (0xc7a8)
 
 Packet number: 165  Packet Len: 123
 
@@ -4538,14 +4538,14 @@ Packet number: 165  Packet Len: 123
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 109
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd4c8)
+		Checksum: Correct (0xd4c8)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 89
 		Source Port: 1663
@@ -4557,7 +4557,7 @@ Checksum: Incorrect (0xd4c8)
 		FIN Flag: Yes
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0x36fc)
+		Checksum: Correct (0x36fc)
 
 Packet number: 166  Packet Len: 60
 
@@ -4567,14 +4567,14 @@ Packet number: 166  Packet Len: 60
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 44
 		Protocol: TCP
-Checksum: Incorrect (0x3da5)
+		Checksum: Correct (0x3da5)
 		Sender IP: 66.212.229.183
 		Dest IP: 192.168.1.102
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 2147
@@ -4586,7 +4586,7 @@ Checksum: Incorrect (0x3da5)
 		FIN Flag: Yes
 		ACK Flag: Yes
 		Window Size: 12675
-Checksum: Incorrect (0xd2af)
+		Checksum: Correct (0xd2af)
 
 Packet number: 167  Packet Len: 54
 
@@ -4596,14 +4596,14 @@ Packet number: 167  Packet Len: 54
 		Type: IP
 
 	IP Header
-
 		IP PDU Len: 40
 		Header Len (bytes): 20
 		TTL: 128
 		Protocol: TCP
-Checksum: Incorrect (0xd50c)
+		Checksum: Correct (0xd50c)
 		Sender IP: 192.168.1.102
 		Dest IP: 66.212.229.183
+
 	TCP Header
 		Segment Length: 20
 		Source Port: 1663
@@ -4615,5 +4615,5 @@ Checksum: Incorrect (0xd50c)
 		FIN Flag: No
 		ACK Flag: Yes
 		Window Size: 17424
-Checksum: Incorrect (0xc022)
+		Checksum: Correct (0xc022)
 

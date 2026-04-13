@@ -68,7 +68,7 @@ int ip(const unsigned char *packet){ // checksum
     struct in_addr dst_ip_;
     ip_o* data = (ip_o*)packet;
     int header_len = ((data->version_header_len & 15)*4); // chill bit mask
-    printf("\tIP Header\n");
+    printf("\tIP Header\n\n");
 
     printf("\t\tIP PDU Len: %d\n", ntohs(data->total_length)); // ntohs reverses the byte order
     printf("\t\tHeader Len (bytes): %d\n", header_len);
@@ -90,7 +90,7 @@ int ip(const unsigned char *packet){ // checksum
             out = -1;
             break;
     }
-    if(1==1) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else printf("Checksum: Incorrect (0x%04x)\n", ntohs(data->checksum)); // this is wrong do it better
+    if(in_cksum((unsigned short) data, sizeof()) == 0) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else if(in_cksum((unsigned short) data, sizeof()) != 0)printf("Checksum: Incorrect (0x%04x)\n", ntohs(data->checksum)); // this is wrong do it better
     memcpy(&src_ip_, data->src_ip, 4);
     printf("\t\tSender IP: %s\n", inet_ntoa(src_ip_));
     memcpy(&dst_ip_, data->dst_ip, 4);
@@ -124,7 +124,7 @@ void tcp(const unsigned char *packet, int ip_len){ // checksum
     if (data->flags & 0x10) printf("\t\tACK Flag: Yes\n"); else printf("\t\tACK Flag: No\n");
 
     printf("\t\tWindow Size: %d\n", ntohs(data->window));
-    if(1==1) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else printf("Checksum: Incorrect (0x%04x)\n", ntohs(data->checksum));
+    if(in_cksum((unsigned short*)data, sizeof(data)) ==0) printf("\t\tChecksum: Correct (0x%04x)\n", ntohs(data->checksum)); else if(in_cksum((unsigned short*)data, sizeof(data)) != 0)printf("Checksum: Incorrect (0x%04x)\n", ntohs(data->checksum));
 }
 void udp(const unsigned char *packet){
     udp_o* data = (udp_o*)packet;
@@ -203,7 +203,7 @@ int main(int argc, char *argv[]) {
                     udp(packet + sizeof(ethernet_o) + ip_len);
                     break;
                 default:
-                    printf("bad ip payload");
+                    printf("\t\tProtocol: Unknown\n");
                     break;
             }
         }

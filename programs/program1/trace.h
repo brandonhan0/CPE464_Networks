@@ -4,7 +4,8 @@
 #include <stdint.h>
 #include <pcap.h>
 #include <arpa/inet.h>
-#include <netinet/ether.h> // ether_ntoa
+#include <netinet/ether.h>
+#include "checksum.h"
 
 
 int ethernet(const unsigned char *packet);

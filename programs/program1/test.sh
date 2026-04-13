@@ -21,21 +21,21 @@ run_test () {
         diff --ignore-all-space --ignore-blank-lines "$OUTPUT" "$EXPECTED" | grep -E '^[<>]'
     fi
 
-    echo "--------------------------"
+    echo "=========================="
 }
 
 # ===== TEST CASES =====
-#run_test IP_bad_checksum.pcap IP_bad_checksum.out # fail
-#run_test TCP_bad_checksum.pcap TCP_bad_checksum.out
+run_test IP_bad_checksum.pcap IP_bad_checksum.out # fail
+run_test TCP_bad_checksum.pcap TCP_bad_checksum.out
 
 
-#run_test UDPfile.pcap UDPfile.out # pass
-#run_test PingTest.pcap PingTest.out # pass
-#run_test mix_withIPoptions.pcap mix_withIPoptions.out # pass
-#run_test smallTCP.pcap smallTCP.out # pass
-#run_test Http.pcap Http.out # pass
-#run_test largeMix.pcap largeMix.out # pass
-#run_test largeMix2.pcap largeMix2.out # pass
+run_test UDPfile.pcap UDPfile.out # pass
+run_test PingTest.pcap PingTest.out # pass
+run_test mix_withIPoptions.pcap mix_withIPoptions.out # pass
+run_test smallTCP.pcap smallTCP.out # pass
+run_test Http.pcap Http.out # pass
+run_test largeMix.pcap largeMix.out # pass
+run_test largeMix2.pcap largeMix2.out # pass
 
 
 echo "Done."

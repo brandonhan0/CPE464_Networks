@@ -1,1 +1,2 @@
-"mingw32-make" is what you run to compile the main.c
+brandon han
+lab time wednesday 12pm-3pm

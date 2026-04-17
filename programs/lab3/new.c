@@ -28,8 +28,8 @@ int sendPDU(int socketNumber, uint8_t* dataBuffer, int lengthOfData, int flag){ 
 
     memcpy(ptr, &new_size_network, 2); // should show make first 2 bytes the size
     memcpy(ptr+2, dataBuffer, lengthOfData); // copy data into pdu data or whatever
-
-    if((numBytes = send(socketNumber, ptr, new_size_host, 0)) <= 0) printf("error in da send"); // pdu length in host order duh we are the host
+    numBytes = send(socketNumber, ptr, new_size_host, 0);
+    if(numBytes < 0) return -1;// pdu length in host order duh we are the host
 
     return numBytes; // return the data bytes we sent 
 
@@ -52,14 +52,18 @@ int recvPDU(int socketNumber, uint8_t* dataBuffer, int bufferSize, int flag){ //
     int numBytes = 1;
     uint16_t size;
     numBytes = recv(socketNumber, &size, 2, MSG_WAITALL);
-    if(numBytes <= 0){printf("error on first recv"); return -1;} // this should return size of the data buffer booya
+    if(numBytes < 0){printf("error on first recv"); return -1;} // this should return size of the data buffer booya
+
+    if(numBytes == 0) return 0; // client closed
 
     int size_host = ntohs(size); // how big it is in host order
 
 
     if(bufferSize < size_host){printf("buffer too small"); return -1;}
     numBytes = recv(socketNumber, dataBuffer, size_host-2, MSG_WAITALL);
-    if(numBytes <= 0){printf("error in second recv"); return -1;} // this should return data
+    if(numBytes < 0){printf("error in second recv"); return -1;} // this should return data
+
+    if(numBytes == 0) return 0; // client closed
 
     return numBytes; // do not add 2 to this
 }

@@ -86,6 +86,7 @@ void recvFromClient(int clientSocket)
 	}
 	else // if recv returns 0 than it means client has closed
 	{
+		close(clientSocket);
 		removeFromPollSet(clientSocket); // removes from poll set
 		printf("Socket %d: Connection closed by other side\n", clientSocket);
 	}

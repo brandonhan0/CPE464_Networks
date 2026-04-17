@@ -64,7 +64,8 @@ void sendToServer(int socketNum)
 
 	if (sent < 0)
 	{
-		perror("send call");
+
+		perror("send err");
 		exit(-1);
 	}
 
@@ -75,7 +76,7 @@ void sendToServer(int socketNum)
 
 	//recvBytes = safeRecv(socketNum, buffer, MAXBUF, 0);
 	recvBytes = recvPDU(socketNum, buffer, MAXBUF, 0);
-
+	if(recvBytes == 0) {perror("Server has terminated"); exit(-1);}
 	printf("Socket %d: Byte recv: %d message: %s\n", socketNum, recvBytes, buffer);
 	
 }

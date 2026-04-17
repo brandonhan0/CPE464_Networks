@@ -58,6 +58,7 @@ void removeFromPollSet(int socketNumber)
 {
 	pollFileDescriptors[socketNumber].fd = 0;
 	pollFileDescriptors[socketNumber].events = 0;
+	currentPollSetSize-=1;
 }
 
 int pollCall(int timeInMilliSeconds)
@@ -126,5 +127,7 @@ static void growPollSet(int newSetSize)
 	currentPollSetSize = newSetSize;
 }
 
-
+int getPollSize(){
+	return currentPollSetSize;
+}
 

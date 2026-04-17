@@ -24,11 +24,14 @@
 #include "networks.h"
 #include "safeUtil.h"
 #include "new.h"
+#include "pollLib.h"
 
 
 
 #define MAXBUF 1024
 #define DEBUG_FLAG 1
+
+
 
 void recvFromClient(int clientSocket);
 int checkArgs(int argc, char *argv[]);
@@ -40,19 +43,20 @@ int main(int argc, char *argv[])
 	int portNumber = 0;
 	int cont_flag = 0;
 	portNumber = checkArgs(argc, argv);
-	
+
+	setupPollSet(); // initializes poll
+
 	//create the server socket
 	mainServerSocket = tcpServerSetup(portNumber);
-
-	// wait for client to connect
-	clientSocket = tcpAccept(mainServerSocket, DEBUG_FLAG);
+	addToPollSet(mainServerSocket); // adds mainServerSocket to poll set
 
 	while(cont_flag == 0){
-		recvFromClient(clientSocket);
+		serverControl(mainServerSocket);
 	}
-	
+
+
 	/* close the sockets */
-	close(clientSocket);
+	//close(clientSocket);
 	close(mainServerSocket);
 
 	
@@ -66,12 +70,6 @@ void recvFromClient(int clientSocket)
 	
 	//now get the data from the client_socket
 
-	// if ((messageLen = safeRecv(clientSocket, dataBuffer, MAXBUF, 0)) < 0)
-	// {
-	// 	perror("recv call");
-	// 	exit(-1);
-	// }
-
 	if ((messageLen = recvPDU(clientSocket, dataBuffer, MAXBUF, 0)) < 0)
 	{
 		perror("recv call");
@@ -83,12 +81,12 @@ void recvFromClient(int clientSocket)
 		printf("Socket %d: Message received, length: %d Data: %s\n", clientSocket, messageLen, dataBuffer);
 		
 		// send it back to client (just to test sending is working... e.g. debugging)
-		//messageLen = safeSend(clientSocket, dataBuffer, messageLen, 0);
 		messageLen = sendPDU(clientSocket, dataBuffer, messageLen, 0);
 		printf("Socket %d: msg sent: %d bytes, text: %s\n", clientSocket, messageLen, dataBuffer);
 	}
-	else
+	else // if recv returns 0 than it means client has closed
 	{
+		removeFromPollSet(clientSocket); // removes from poll set
 		printf("Socket %d: Connection closed by other side\n", clientSocket);
 	}
 
@@ -115,3 +113,23 @@ int checkArgs(int argc, char *argv[])
 	return portNumber;
 }
 
+void serverControl(int mainServerSocket){
+	int socket = pollCall(0);
+	if(socket > 0){ // if theres a socket
+		if(socket == mainServerSocket){ // if this is the acceptor socket
+			addNewSocket(mainServerSocket); // adds new socket to poll
+		}
+		else{ // if its not a new socket its one of the clients already connected
+			processClient(socket);
+		}
+	}
+}
+
+void processClient(int clientSocket){
+	recvFromClient(clientSocket);
+}
+
+void addNewSocket(int mainServerSocket){
+	int clientSocket = tcpAccept(mainServerSocket, DEBUG_FLAG);
+	addToPollSet(clientSocket); // add client to poll set
+}

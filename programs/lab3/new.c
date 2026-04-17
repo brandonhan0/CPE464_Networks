@@ -52,14 +52,14 @@ int recvPDU(int socketNumber, uint8_t* dataBuffer, int bufferSize, int flag){ //
     int numBytes = 1;
     uint16_t size;
     numBytes = recv(socketNumber, &size, 2, MSG_WAITALL);
-    if(numBytes <= 0){printf("error on first recv"); exit(-1);} // this should return size of the data buffer booya
+    if(numBytes <= 0){printf("error on first recv"); return -1;} // this should return size of the data buffer booya
 
     int size_host = ntohs(size); // how big it is in host order
 
 
-    if(bufferSize < size_host){printf("buffer too small"); exit(-1);}
+    if(bufferSize < size_host){printf("buffer too small"); return -1;}
     numBytes = recv(socketNumber, dataBuffer, size_host-2, MSG_WAITALL);
-    if(numBytes <= 0){printf("error in second recv"); exit(-1);} // this should return data
+    if(numBytes <= 0){printf("error in second recv"); return -1;} // this should return data
 
     return numBytes; // do not add 2 to this
 }

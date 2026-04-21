@@ -1,0 +1,11 @@
+lab time wendnesday 12-3 brandon han
+
+todos:
+- have server, write client code, server should be able to handle n clients
+- MAKE handle table(maps users handle to a socket number)
+- example is one client sends to server and the server maps that message to be sent to a different socket using the handle table
+- handle table must by dynamic and able to grow in size, it doesnt need to be able to shrink but should be able to grow
+- mallloc, and than realloc for dynamic resizing
+- use server and client main loops polling functionality
+- client sends handle, server returns ok or not ok? (if theres 2 people with the same name its going to say you cant use that, if the handles unique its gonna send back an ok OR it can send handle name over and its going to get a NOT OK)
+- for handle table, you should be able to look up by a handle AND look up by a socket

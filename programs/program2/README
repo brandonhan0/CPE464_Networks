@@ -9,3 +9,8 @@ todos:
 - use server and client main loops polling functionality
 - client sends handle, server returns ok or not ok? (if theres 2 people with the same name its going to say you cant use that, if the handles unique its gonna send back an ok OR it can send handle name over and its going to get a NOT OK)
 - for handle table, you should be able to look up by a handle AND look up by a socket
+
+
+
+
+flag flow

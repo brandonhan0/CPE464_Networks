@@ -33,6 +33,7 @@
 
 
 
+
 void recvFromClient(int clientSocket);
 int checkArgs(int argc, char *argv[]);
 
@@ -57,7 +58,6 @@ int main(int argc, char *argv[])
 
 
 	/* close the sockets */
-	//close(clientSocket);
 	close(mainServerSocket);
 
 	
@@ -72,7 +72,7 @@ void recvFromClient(int clientSocket)
 	
 	//now get the data from the client_socket
 
-	if ((messageLen = recvPDU(clientSocket, dataBuffer, MAXBUF, &flag)) < 0) // should fill flag
+	if ((messageLen = recvPDU(clientSocket, dataBuffer, MAXBUF, 0)) < 0) // data buffer will now have whatever pdu it is and now we gotta figure it out using the flag
 	{
 		perror("recv call");
 		exit(-1);
@@ -80,16 +80,31 @@ void recvFromClient(int clientSocket)
 
 	if (messageLen > 0)
 	{
-		printf("Socket %d: Message received, length: %d Data: %s\n", clientSocket, messageLen, dataBuffer);
+
+		// process flag first
+		uint8_t flag;
+		memcpy(&flag, &dataBuffer+2, 1); // this should give me flag skip the first 2 bytes whatever
 		
-		// send it back to client (just to test sending is working... e.g. debugging)
-		messageLen = sendPDU(clientSocket, dataBuffer, messageLen, &flag);
+		
+
+
+
+
+
+
+
+
+
+
+
+		printf("Socket %d: Message received, length: %d Data: %s\n", clientSocket, messageLen, dataBuffer);
+		messageLen = sendPDU(clientSocket, dataBuffer, messageLen, 0);
 		printf("Socket %d: msg sent: %d bytes, text: %s\n", clientSocket, messageLen, dataBuffer);
 	}
 	else // if recv returns 0 than it means client has closed
 	{
 		close(clientSocket);
-		removeFromPollSet(clientSocket); // removes from poll set
+		removeFromPollSet(clientSocket); 
 		printf("Socket %d: Connection closed by other side\n", clientSocket);
 	}
 
@@ -117,7 +132,7 @@ int checkArgs(int argc, char *argv[])
 }
 
 void serverControl(int mainServerSocket){
-	int socket = pollCall(0);
+	int socket = pollCall(-1);
 	if(socket > 0){ // if theres a socket
 		if(socket == mainServerSocket){ // if this is the acceptor socket
 			addNewSocket(mainServerSocket); // adds new socket to poll

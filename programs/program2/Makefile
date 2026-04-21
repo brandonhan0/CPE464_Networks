@@ -9,11 +9,11 @@ OBJS = networks.o gethostbyname.o pollLib.o safeUtil.o
 
 all:   cclient server
 
-cclient: cclient.c new.c $(OBJS)
-	$(CC) $(CFLAGS) -o cclient cclient.c new.c $(OBJS) $(LIBS)
+cclient: cclient.c new.c handletable.c $(OBJS)
+	$(CC) $(CFLAGS) -o cclient cclient.c new.c handletable.c handletable.h $(OBJS) $(LIBS)
 
-server: server.c new.c $(OBJS)
-	$(CC) $(CFLAGS) -o server server.c new.c $(OBJS) $(LIBS)
+server: server.c new.c handletable.c $(OBJS)
+	$(CC) $(CFLAGS) -o server server.c new.c handletable.c handletable.h $(OBJS) $(LIBS)
 
 .c.o:
 	gcc -c $(CFLAGS) $< -o $@ $(LIBS)

@@ -49,8 +49,8 @@ int getSocketNum(uint8_t* handle){// must be null terminated
     return -1;
 }
 
-int giveHandleTable(){
-    printf("Clients online:\n");
+int giveHandleTable(uint8_t* buffer){
+    memcpy(buffer, )
     for(int i = 0; i < curTableSize; i++){
         printf("\t%s\n", handleTable[i].handleName);
     }

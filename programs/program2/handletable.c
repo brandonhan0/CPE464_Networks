@@ -2,7 +2,7 @@
 
 tableItem *handleTable;
 
-int makeTable(void){
+int initHandleTable(void){
     handleTable = malloc(curMaxTableSize * sizeof(tableItem)); // can handle 100 of these bad boys
     if (handleTable == NULL) return -1;
     return 0;
@@ -48,6 +48,13 @@ int getSocketNum(uint8_t* handle){// must be null terminated
     }
     return -1;
 }
+
+int giveHandleTable(){
+    printf("Clients online:\n");
+    for(int i = 0; i < curTableSize; i++){
+        printf("\t%s\n", handleTable[i].handleName);
+    }
+} // todo
 
 int getTableSize(void){
     return curTableSize;

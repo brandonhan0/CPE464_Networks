@@ -41,16 +41,17 @@ int main(int argc, char * argv[]) // ./cclient handle server-name server-port i 
 	int cont_flag = 0;
 	checkArgs(argc, argv);
 	setupPollSet();
-	/* set up the TCP Client socket  */
+
 	socketNum = tcpClientSetup(argv[2], argv[3], DEBUG_FLAG); // now its cclient handle server-name server-port, [1], [2] was local host, server port number
 
     strncpy((char*)srcHandler, argv[1], sizeof(srcHandler) - 1); // should save the client handle on start up
     srcHandler[sizeof(srcHandler) - 1] = '\0';
-
 	addToPollSet(socketNum);
 	addToPollSet(STDIN_FILENO);
 
-	while(cont_flag == 0){
+	CheckHandle(socketNum); // will close connection if bad
+
+	while(cont_flag){
 		clientControl(socketNum);
 	}
 	
@@ -74,7 +75,6 @@ void sendToServer(int socketNum)
 
 	if (sent < 0)
 	{
-
 		perror("send err");
 		exit(-1);
 	}
@@ -97,45 +97,49 @@ int readFromStdin(uint8_t * buffer)
 	printf("$: ");
 
 	char cmd[3];
-	char handle[100];
 
 	// blocking calls for commands
-	scanf("%s", &cmd); // get cmd
-	switch(*cmd){
-		case '%M':
-		case '%m':
-			command = MESSAGE;
-			break;
-		case '%C':
-		case '%c':
-			command = MULTICAST;
-			break;
-		case '%b':
-		case '%B':
-			command = BROADCAST;
-			break;
-		case '%l':
-		case '%L':
-			command = HANDLELIST;
-			break;
-		default:
-			printf("Invalid command\n");
-			command = -1;
-	}	
+	scanf("%2s", cmd); // get cmd
+	if(cmd[0] == '%'){
+		switch(cmd[1]){
+			case 'M':
+			case 'm':
+				command = MESSAGE;
+				break;
+			case 'C':
+			case 'c':
+				command = MULTICAST;
+				break;
+			case 'b':
+			case 'B':
+				command = BROADCAST;
+				break;
+			case 'l':
+			case 'L':
+				command = HANDLELIST;
+				break;
+			default:
+				printf("Invalid command\n");
+				command = -1;
+		}	
+	} else {
+		printf("Invalid command\n");
+		command = -1;
+	}
 
 	switch(command){
 		case MESSAGE: // for message we want to know the dest-handle-name first, than the rest is the tx-message
 			Mpacket packetOut = {};
 
-			packetOut.flag = 1; // do this ltr
+			packetOut.flag = 5;
 			packetOut.srcHandleLen = strlen(srcHandler)+1;
-			if(packetOut.srcHandleLen > 100) printf("Invalid handle, handle longer than 100 characters\n");
+			if(packetOut.srcHandleLen > 100) printf("Invalid src handle, handle longer than 100 characters\n");
 			memcpy(&packetOut.srcHandle, &srcHandler, packetOut.srcHandleLen); // should work and add the null ternimator
 			packetOut.numDest = 1;
-			scanf("%s", &packetOut.dstHandle); // this comes after the command so booya
-			packetOut.dstHandleLen = strlen(packetOut.dstHandle)+1;
+			scanf("%s", &packetOut.dests[0].handle); // this comes after the command so booya
+			packetOut.dests[0].handleLen = strlen(packetOut.dests[0].handle)+1;
+			if(packetOut.dests[0].handleLen > 100)	 printf("Invalid dst handle, handle longer than 100 characters\n");
 			scanf("%s", &packetOut.message); // this should have a null ternimator
-
 			memcpy(buffer, &packetOut, sizeof(Mpacket)); // put message struct in buffer
 
 			return sizeof(Mpacket);
@@ -146,66 +150,6 @@ int readFromStdin(uint8_t * buffer)
 			break;
 		case HANDLELIST:
 			break;
-	}
-
-
-	while (inputLen < (MAXBUF - 1) && aChar != '\n'){ // this will just run until we return basically kind of fake
-		aChar = getchar();
-		if (aChar != '\n')
-		{
-			if(prevChar == '%'){ // tells us the command we wanna go with
-				switch(*cmd){
-					case '%M':
-					case '%m':
-						command = MESSAGE;
-						break;
-					case '%C':
-					case '%c':
-						command = MULTICAST;
-						break;
-					case '%b':
-					case '%B':
-						command = BROADCAST;
-						break;
-					case '%l':
-					case '%L':
-						command = HANDLELIST;
-						break;
-					default:
-						printf("Invalid command\n");
-						command = 0;
-				}	
-			}
-
-			if(command != 0){
-				switch(command){
-					case MESSAGE: // for message we want to know the dest-handle-name first, than the rest is the tx-message
-						Mpacket packetOut = {};
-
-						packetOut.flag = 1; // do this ltr
-						packetOut.srcHandleLen = strlen(srcHandler)+1;
-						if(packetOut.srcHandleLen > 100) printf("Invalid handle, handle longer than 100 characters\n");
-						memcpy(&packetOut.srcHandle, &srcHandler, packetOut.srcHandleLen); // should work and add the null ternimator
-						packetOut.numDest = 1;
-						scanf("%s", &packetOut.dstHandle); // this comes after the command so booya
-						packetOut.dstHandleLen = strlen(packetOut.dstHandle)+1;
-						scanf("%s", &packetOut.message); // this should have a null ternimator
-
-						memcpy(buffer, &packetOut, sizeof(Mpacket)); // put message struct in buffer
-
-						return sizeof(Mpacket);
-						break; // it never gets here but whatever
-					case MULTICAST:
-						break;
-					case BROADCAST:
-						break;
-					case HANDLELIST:
-						break;
-				}
-			}
-			prevChar = aChar;
-			inputLen++;
-		}
 	}	
 	return -1;
 }
@@ -223,7 +167,7 @@ void checkArgs(int argc, char * argv[])
 void clientControl(int socketNum){ // still need to do stuff with flag idk
 	uint8_t buffer[MAXBUF];   //data buffer
 	uint8_t flag;
-
+	
 	int fd = pollCall(-1);
 	if(fd == socketNum){
 		// do socket
@@ -249,7 +193,57 @@ void processStdin(int socketNum, uint8_t* buffer){
 
 void processMsgFromServer(int socketNum, uint8_t* buffer){
 	int recvBytes = 0;
+	flags flag;
 	recvBytes = recvPDU(socketNum, buffer, MAXBUF, 0);
 	if(recvBytes == 0){perror("Server terminated"); exit(-1);}
-	printf("Socket %d: Byte recv: %d message: %s\n", socketNum, recvBytes, buffer);
+
+	// process flag first
+	memcpy(&flag, &buffer+2, 1);
+	
+	switch(flag){
+		case S_C_GOOD_HANDLE:
+			printf("Server says handle good\n");
+			break;
+		case S_C_BAD_HANDLE:
+
+			printf("Server says <%s> does not exist\n");
+			break;
+		case C_S_C_BROADCAST:
+			break;
+		case C_S_C_MESSAGE: // %m command from other clients(c->s->c)
+			Mpacket* data = (Mpacket*) buffer;
+			printf("%s: %s\n", data->srcHandle, data->message); // should literally just spit out the message
+			break;
+		case C_S_C_MULTICAST:
+			break;
+		case S_C_MULTICAST_ERROR:
+			break;
+		case S_C_HANDLE_RESP_1:
+			break;
+		case S_C_HANDLE_RESP_2:
+			break;
+	    case S_C_L_DONE:
+			break;
+	}
+}
+
+int CheckHandle(int socketNum){
+	Initpacket message = {};
+	uint8_t buffer[MAXBUF];
+
+	message.flag = 0;
+	message.srcHandleLen = strlen(srcHandler)+1;
+	if(message.srcHandleLen > 100) printf("Invalid src handle, handle longer than 100 characters\n");
+	memcpy(&message.srcHandle, &srcHandler, strlen(srcHandler)+1); // should work and add the null ternimator
+
+	int sent =  sendPDU(socketNum, &message, sizeof(Mpacket), 0);
+	if (sent < 0){perror("send err"); exit(-1);}
+	int feedback = recvPDU(socketNum, buffer, MAXBUF, 0);
+
+	if(buffer[0] == 1){ // this will be sent by server
+		printf("Handle already has: %s", srcHandler);
+		close(socketNum);
+		return -1;
+	}
+	return 0;
 }

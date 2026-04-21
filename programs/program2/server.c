@@ -25,6 +25,7 @@
 #include "safeUtil.h"
 #include "new.h"
 #include "pollLib.h"
+#include "handletable.h"
 
 
 
@@ -45,7 +46,7 @@ int main(int argc, char *argv[])
 	int cont_flag = 0;
 	
 	portNumber = checkArgs(argc, argv);
-
+	initHandleTable();
 	setupPollSet(); // initializes poll
 
 	//create the server socket
@@ -82,24 +83,22 @@ void recvFromClient(int clientSocket)
 	{
 
 		// process flag first
-		uint8_t flag;
+		flags flag;
 		memcpy(&flag, &dataBuffer+2, 1); // this should give me flag skip the first 2 bytes whatever
 		
 		
-
-
-
-
-
-
-
-
-
-
-
-		printf("Socket %d: Message received, length: %d Data: %s\n", clientSocket, messageLen, dataBuffer);
-		messageLen = sendPDU(clientSocket, dataBuffer, messageLen, 0);
-		printf("Socket %d: msg sent: %d bytes, text: %s\n", clientSocket, messageLen, dataBuffer);
+		switch(flag){
+			case C_S_INIT:
+				Initpacket* data = (Initpacket*)dataBuffer;
+				
+				break;
+			case C_S_C_BROADCAST:
+				break;
+			case C_S_C_MULTICAST:
+				break;
+			case C_S_HANDLE_REQ:
+				break;
+		}
 	}
 	else // if recv returns 0 than it means client has closed
 	{
@@ -150,4 +149,6 @@ void processClient(int clientSocket){
 void addNewSocket(int mainServerSocket){
 	int clientSocket = tcpAccept(mainServerSocket, DEBUG_FLAG);
 	addToPollSet(clientSocket); // add client to poll set
+
+
 }

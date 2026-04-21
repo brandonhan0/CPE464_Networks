@@ -10,7 +10,7 @@ typedef struct{
 static int curTableSize = 0;
 static int curMaxTableSize = 100;
 
-int makeTable(void);
+int initHandleTable(void);
 int addItem(int socketNum, uint8_t* handleName);
 int increaseTableSize();
 int getHandle(int socketNum, uint8_t* buffer);

@@ -16,3 +16,5 @@ int increaseTableSize();
 int getHandle(int socketNum, uint8_t* buffer);
 int getSocketNum(uint8_t* handle);
 int getTableSize(void);
+int giveHandleTableItem(uint8_t* buffer, int itemNum);
+int doesHandleExist(uint8_t* buffer, int bufferSize);

@@ -42,24 +42,24 @@ typedef enum{
     S_C_HANDLE_RESP_2, /* = 12
     - this flag comes right after 11 and will basically send this flag with every handle send and the client has to receive it x many times
     */
-   S_C_L_DONE /* = 13
-   - tells the client that handle list is done
-   */
+    S_C_L_DONE /* = 13
+    - tells the client that handle list is done
+    */
 	
-}flags;
+} flags;
 
 typedef enum{
 	MESSAGE,
 	MULTICAST,
 	BROADCAST,
 	HANDLELIST
-}commands;
+} commands;
 
 #pragma pack(push, 1)
 typedef struct{
      uint8_t handleLen;
      uint8_t handle[100];
-}destHandle;
+} destHandle;
 #pragma pack(pop)
 
 #pragma pack(push, 1)
@@ -71,7 +71,7 @@ typedef struct{ // i think this is right idk
     destHandle dests[10]; // allows for muiltiple handles
     uint8_t message[200]; // message is 200 bytes max
 } Mpacket;
-#pragma pop(push)
+#pragma pack(pop)
 
 #pragma pack(push, 1)
 typedef struct{ // i think this is right idk
@@ -80,20 +80,20 @@ typedef struct{ // i think this is right idk
     uint8_t srcHandle[100]; // max 100 bytes
     uint8_t message[200]; // message is 200 bytes max
 } Bpacket;
-#pragma pop(push)
+#pragma pack(pop)
 
 #pragma pack(push, 1)
 typedef struct{ // i think this is right idk
     uint8_t flag; // flag = 4 normally
     uint8_t srcHandleLen; // length
     uint8_t srcHandle[100]; // max 100 bytes
-} Initpacket;
-#pragma pop(push)
+} InitPacket;
+#pragma pack(pop)
 
 #pragma pack(push, 1)
 typedef struct{ // i think this is right idk
-    uint8_t flag; // flag = 4 normally
+    uint8_t flag; // flag = 2/3 normally
     uint8_t message[200]; // length
 } ServerPacket;
-#pragma pop(push)
+#pragma pack(pop)
 

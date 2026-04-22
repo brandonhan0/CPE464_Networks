@@ -20,6 +20,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 #include "networks.h"
 #include "safeUtil.h"
@@ -40,28 +41,20 @@ int checkArgs(int argc, char *argv[]);
 
 int main(int argc, char *argv[])
 {
-	int mainServerSocket = 0;   //socket descriptor for the server socket
-	int clientSocket = 0;   //socket descriptor for the client socket
+	int mainServerSocket = 0; 
 	int portNumber = 0;
-	int cont_flag = 0;
 	
 	portNumber = checkArgs(argc, argv);
 	initHandleTable();
-	setupPollSet(); // initializes poll
+	setupPollSet();
 
-	//create the server socket
 	mainServerSocket = tcpServerSetup(portNumber);
-	addToPollSet(mainServerSocket); // adds mainServerSocket to poll set
+	addToPollSet(mainServerSocket);
 
-	while(cont_flag == 0){
+	while(true){
 		serverControl(mainServerSocket);
 	}
-
-
-	/* close the sockets */
-	close(mainServerSocket);
-
-	
+	close(mainServerSocket);	
 	return 0;
 }
 
@@ -75,22 +68,28 @@ void recvFromClient(int clientSocket)
 
 	if ((messageLen = recvPDU(clientSocket, dataBuffer, MAXBUF, 0)) < 0) // data buffer will now have whatever pdu it is and now we gotta figure it out using the flag
 	{
+		printf("hi1\n");
 		perror("recv call");
 		exit(-1);
 	}
 
 	if (messageLen > 0)
 	{
-
 		// process flag first
-		flags flag;
-		memcpy(&flag, &dataBuffer+2, 1); // this should give me flag skip the first 2 bytes whatever
-		
-		
+		flag = dataBuffer[0];		
+
 		switch(flag){
 			case C_S_INIT:
-				Initpacket* data = (Initpacket*)dataBuffer;
-				
+			 	InitPacket* data = (InitPacket*)dataBuffer;
+				ServerPacket message = {};
+				printf("%s has joined\n", data->srcHandle);
+				if(doesHandleExist(data->srcHandle, data->srcHandleLen) == 0){ // 0 indicates this does not exist and were good
+					message.flag = S_C_GOOD_HANDLE;
+				} else message.flag = S_C_BAD_HANDLE;
+				strcpy(&message.message, data->srcHandle);
+				int sendSize = sendPDU(clientSocket, &message, sizeof(ServerPacket), 0);
+				printf("init done\n");
+				addItem(clientSocket, data->srcHandle);
 				break;
 			case C_S_C_BROADCAST:
 				break;

@@ -49,13 +49,20 @@ int getSocketNum(uint8_t* handle){// must be null terminated
     return -1;
 }
 
-int giveHandleTable(uint8_t* buffer){
-    memcpy(buffer, )
-    for(int i = 0; i < curTableSize; i++){
-        printf("\t%s\n", handleTable[i].handleName);
-    }
-} // todo
+int giveHandleTableItem(uint8_t* buffer, int itemNum){
+    memcpy(buffer, handleTable[itemNum].handleName, strlen(handleTable[itemNum].handleName)+1); // puts handle name in buffer
+    return 0;
+}
 
 int getTableSize(void){
     return curTableSize;
+}
+
+int doesHandleExist(uint8_t* buffer, int bufferSize){
+    for(int i = 0; i < curTableSize; i++){
+        if(0 == strncmp(buffer, handleTable[i].handleName, bufferSize)){ // basically if it exists than return 1
+            return 1; 
+        }
+    }
+    return 0; // otherwise return 0
 }

@@ -145,16 +145,12 @@ int readFromStdin(uint8_t * buffer){
 			}
 			case MULTICAST:
 			{
-				printf("poop\n");
 				Mpacket packetOut = {};
 				packetOut.flag = 6;
 				packetOut.srcHandleLen = strlen(srcHandler)+1;
-				printf("poop\n");
 				if(packetOut.srcHandleLen > 99) {printf("Invalid src handle, handle longer than 100 characters\n"); return -1;}
 				strcpy(packetOut.srcHandle, &srcHandler); 
-				printf("poop\n");
 				token = strtok(NULL, " "); // this should get number of destinations
-				printf("poop\n");
 				packetOut.numDest = token;
 				printf("num: %s\n", packetOut.numDest);
 				if(packetOut.numDest >= 9){printf("Too many destinations\n"); return -1;}

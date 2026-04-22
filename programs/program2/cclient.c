@@ -27,7 +27,7 @@
 #include "new.h"
 #include "pollLib.h"
 
-#define MAXBUF 1024
+#define MAXBUF 1400
 #define DEBUG_FLAG 1
 
 uint8_t srcHandler[100];
@@ -65,7 +65,6 @@ void sendToServer(int socketNum){
 	uint8_t flag = 0;
 	
 	sendLen = readFromStdin(buffer);
-	printf("read: %s string len: %d (including null)\n", buffer, sendLen);
 	
 	sent =  sendPDU(socketNum, buffer, sendLen, 0);
 
@@ -97,7 +96,6 @@ int readFromStdin(uint8_t * buffer){
 		char *token = strtok(stdinBuffer, " "); // gets first token this should be command
 		int counter = 0;
 		if(token != NULL) { // gets command
-			printf("%s\n", token);
 			if(token[0] == '%'){
 				switch(token[1]){
 					case 'M':
@@ -122,9 +120,6 @@ int readFromStdin(uint8_t * buffer){
 				}
 			}
 		}
-		
-		token = strtok(NULL, " ");
-		int arg_counter = 0;
 		switch(command){
 			case MESSAGE: // for message we want to know the dest-handle-name first, than the rest is the tx-message
 			{
@@ -135,13 +130,16 @@ int readFromStdin(uint8_t * buffer){
 				strcpy(packetOut.srcHandle, &srcHandler); 
 				packetOut.numDest = 1;
 				token = strtok(NULL, " "); // this should get desthandle
+				printf("dest handle: %s\n", token);
 				packetOut.dests[0].handleLen = strlen(token)+1;
 				if(packetOut.dests[0].handleLen > 99) {printf("Invalid dst handle, handle longer than 100 characters\n"); return -1;}
 				strcpy(packetOut.dests[0].handle, token); 
 				uint8_t* theMessage = strtok(NULL, ""); // i love this function
-				if(strlen(theMessage) >= 199){printf("This message is to big\n"); return -1;}
+				if(strlen(theMessage) >= 199){printf("This message is too big\n"); return -1;}
 			    strcpy(packetOut.message, theMessage);
 				memcpy(buffer, &packetOut, sizeof(Mpacket));
+				printf("\n\tMessage size: %d \n\tClient sending: %s", sizeof(Mpacket), packetOut.message); // message comes with \n thats funny
+				printf("\tDest Handle size:%d \n\tDest Handle: %s\n\n", packetOut.dests[0].handleLen, packetOut.dests[0].handle);
 				return sizeof(Mpacket);
 				break; // it never gets here but whatever
 			}
@@ -150,6 +148,31 @@ int readFromStdin(uint8_t * buffer){
 				while(token != NULL){
 					token = strtok(NULL, " ");
 				}
+				Mpacket packetOut = {};
+				packetOut.flag = 5;
+				packetOut.srcHandleLen = strlen(srcHandler)+1;
+				if(packetOut.srcHandleLen > 99) {printf("Invalid src handle, handle longer than 100 characters\n"); return -1;}
+				strcpy(packetOut.srcHandle, &srcHandler); 
+				token = strtok(NULL, " "); // this should get number of destinations
+				packetOut.numDest = token;
+				if(packetOut.numDest > 9){printf("Too many destinations\n"); return -1;}
+				if(packetOut.numDest < 2){printf("Too little destinations\n"); return -1;}
+				for(int i = 0; i < packetOut.numDest; i++){
+					token = strtok(NULL, " "); // this should get handler of destinations
+					if((strlen(token)+1) > 99) {printf("Invalid dst handle #%d, handle longer than 100 characters\n", i); return -1;}
+					packetOut.dests[i].handleLen = strlen(token)+1;
+					strcpy(packetOut.dests[i].handle, token); 
+					printf("\tSending to %s\n", packetOut.dests[i].handle);
+				}
+				uint8_t* theMessage = strtok(NULL, ""); // i love this function
+				if(strlen(theMessage) >= 199){printf("This message is too big\n"); return -1;}
+			    strcpy(packetOut.message, theMessage);
+				memcpy(buffer, &packetOut, sizeof(Mpacket));
+				return sizeof(Mpacket);
+				break;
+			}
+			case HANDLELIST:
+			{
 				break;
 			}
 			case BROADCAST:
@@ -159,82 +182,10 @@ int readFromStdin(uint8_t * buffer){
 				}
 				break;
 			}
-			case HANDLELIST:
-			{
-				break;
-			}
 		}	
 	}
 }
 
-
-
-
-
-
-
-
-
-
-	// char cmd[3];
-
-	// // blocking calls for commands
-	// scanf("%2s", cmd); // get cmd
-	// printf("%s\n", cmd);
-	// if(cmd[0] == '%'){
-	// 	switch(cmd[1]){
-	// 		case 'M':
-	// 		case 'm':
-	// 			command = MESSAGE;
-	// 			break;
-	// 		case 'C':
-	// 		case 'c':
-	// 			command = MULTICAST;
-	// 			break;
-	// 		case 'b':
-	// 		case 'B':
-	// 			command = BROADCAST;
-	// 			break;
-	// 		case 'l':
-	// 		case 'L':
-	// 			command = HANDLELIST;
-	// 			break;
-	// 		default:
-	// 			printf("Invalid command\n");
-	// 			command = -1;
-	// 	}	
-	// } else {
-	// 	printf("Invalid command\n");
-	// 	command = -1;
-	// }
-	// printf("command: %d", command);
-	// switch(command){
-
-	// 	case MESSAGE: // for message we want to know the dest-handle-name first, than the rest is the tx-message
-
-	// 		Mpacket packetOut = {};
-
-	// 		packetOut.flag = 5;
-	// 		packetOut.srcHandleLen = strlen(srcHandler)+1;
-	// 		if(packetOut.srcHandleLen > 100) printf("Invalid src handle, handle longer than 100 characters\n");
-	// 		memcpy(&packetOut.srcHandle, &srcHandler, packetOut.srcHandleLen); // should work and add the null ternimator
-	// 		packetOut.numDest = 1;
-	// 		scanf("%s", &packetOut.dests[0].handle); // this comes after the command so booya
-	// 		packetOut.dests[0].handleLen = strlen(packetOut.dests[0].handle)+1;
-	// 		if(packetOut.dests[0].handleLen > 100)	 printf("Invalid dst handle, handle longer than 100 characters\n");
-	// 		scanf("%s", &packetOut.message); // this should have a null ternimator
-	// 		memcpy(buffer, &packetOut, sizeof(Mpacket)); // put message struct in buffer
-
-	// 		return sizeof(Mpacket);
-	// 		break; // it never gets here but whatever
-	// 	case MULTICAST:
-	// 		break;
-	// 	case BROADCAST:
-	// 		break;
-	// 	case HANDLELIST:
-	// 		break;
-	// }	
-	// return -1;
 
 
 void checkArgs(int argc, char * argv[])
@@ -267,13 +218,9 @@ void processStdin(int socketNum, uint8_t* buffer){
 	int sent = 0;
 	sendLen = readFromStdin(buffer);
 	if(sendLen >= 0){
-		printf("read: %s string len: %d (including null)\n", buffer, sendLen);
 		sent =  sendPDU(socketNum, buffer, sendLen, 0);
-	
 		if (sent < 0){perror("send err"); exit(-1);}
-	
-		printf("Socket:%d: Sent, Length: %d msg: %s\n", socketNum, sent, buffer);
-	}
+		}
 }
 
 void processMsgFromServer(int socketNum, uint8_t* buffer){
@@ -286,22 +233,17 @@ void processMsgFromServer(int socketNum, uint8_t* buffer){
 	flag = buffer[0];
 	
 	switch(flag){
-		case S_C_GOOD_HANDLE:
-			printf("Server says handle good\n");
-			break;
-		case S_C_BAD_HANDLE:
-
-			printf("Server says <%s> does not exist\n");
-			break;
 		case C_S_C_BROADCAST:
 			break;
 		case C_S_C_MESSAGE: // %m command from other clients(c->s->c)
 			Mpacket* data = (Mpacket*) buffer;
-			printf("%s: %s\n", data->srcHandle, data->message); // should literally just spit out the message
+			printf("\n%s: %s", data->srcHandle, data->message); // should literally just spit out the message
 			break;
 		case C_S_C_MULTICAST:
 			break;
 		case S_C_MULTICAST_ERROR:
+			ServerPacket* data = (ServerPacket*) buffer;
+			printf("\nThis handle doesnt exist you chud: %s\n", data->message); // should literally just spit out the message
 			break;
 		case S_C_HANDLE_RESP_1:
 			break;
@@ -325,7 +267,7 @@ int CheckHandle(int socketNum){
 	int feedback = recvPDU(socketNum, buffer, MAXBUF, 0);
 	ServerPacket* data = (ServerPacket*) buffer;
 	if(data->flag == S_C_BAD_HANDLE){
-		printf("Handle already has: %s\n", srcHandler);
+		printf("Handle already in use: %s\n", srcHandler);
 		close(socketNum);
 		return -1;
 	}

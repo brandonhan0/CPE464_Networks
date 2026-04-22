@@ -30,7 +30,7 @@
 
 
 
-#define MAXBUF 1024
+#define MAXBUF 1400
 #define DEBUG_FLAG 1
 
 
@@ -77,6 +77,7 @@ void recvFromClient(int clientSocket)
 	{
 		// process flag first
 		flag = dataBuffer[0];		
+		printf("flag: %d\n", flag);
 
 		switch(flag){
 			case C_S_INIT:
@@ -89,14 +90,22 @@ void recvFromClient(int clientSocket)
 				} else message.flag = S_C_BAD_HANDLE;
 				strcpy(&message.message, data->srcHandle);
 				int sendSize = sendPDU(clientSocket, &message, sizeof(ServerPacket), 0);
-				printf("init done\n");
 				addItem(clientSocket, data->srcHandle); // adds to handle table
 				break;
 			}
 			case C_S_C_MESSAGE: // %m
 			{
 				Mpacket* data = (Mpacket*)dataBuffer;
-				data->dests[0].handle
+				printf("receiving data from:%s\n", data->srcHandle);
+				printf("Dest Len: %d, Destination handle: %s\n", data->dests[0].handleLen, data->dests[0].handle);
+				if(doesHandleExist(data->dests[0].handle, data->dests[0].handleLen) == 0){
+					printf("This handle does not exist you frickin chud\n");
+					clientDoesNotExistError(clientSocket ,data->dests[0].handle);
+					return -1;
+				}
+				printf("This is the dest handle: %s", &data->dests[0].handle);
+				int receiverSocket = getSocketNum(&data->dests[0].handle);
+				int sentBytes = sendPDU(receiverSocket, data, messageLen, 0); // sends to the client
 				break;
 			}
 			case C_S_C_BROADCAST:
@@ -156,6 +165,12 @@ void processClient(int clientSocket){
 void addNewSocket(int mainServerSocket){
 	int clientSocket = tcpAccept(mainServerSocket, DEBUG_FLAG);
 	addToPollSet(clientSocket); // add client to poll set
+}
 
-
+int clientDoesNotExistError(int socketDest, uint8_t* badHandle){
+	ServerPacket message = {};
+	message.flag = 7;
+	strcpy(&message.message, badHandle);
+	int sendSize = sendPDU(socketDest, &message, sizeof(ServerPacket), 0);
+	return 0;
 }

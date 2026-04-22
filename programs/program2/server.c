@@ -110,8 +110,22 @@ void recvFromClient(int clientSocket)
 			}
 			case C_S_C_BROADCAST:
 				break;
-			case C_S_C_MULTICAST:
+			case C_S_C_MULTICAST: // this will send the message to everyone except the ppl that dont exist
+			{
+				Mpacket* data = (Mpacket*)dataBuffer;
+				printf("receiving data from:%s\n", data->srcHandle);
+				for(int i = 0; i < data->numDest; i++){ // check if they even exist first
+					if(doesHandleExist(data->dests[i].handle, data->dests[i].handleLen) == 0){
+						printf("This handle(%s) does not exist you frickin chud\n", data->dests[i].handle);
+						clientDoesNotExistError(clientSocket ,data->dests[i].handle);
+						continue;
+					}
+					printf("This is the dest handle: %s", &data->dests[i].handle);
+					int receiverSocket = getSocketNum(&data->dests[i].handle);
+					int sentBytes = sendPDU(receiverSocket, data, messageLen, 0); // sends to the client
+				}
 				break;
+			}
 			case C_S_HANDLE_REQ:
 				break;
 		}

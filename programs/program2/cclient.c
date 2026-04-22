@@ -145,29 +145,40 @@ int readFromStdin(uint8_t * buffer){
 			}
 			case MULTICAST:
 			{
-				while(token != NULL){
-					token = strtok(NULL, " ");
-				}
+				printf("poop\n");
 				Mpacket packetOut = {};
-				packetOut.flag = 5;
+				packetOut.flag = 6;
 				packetOut.srcHandleLen = strlen(srcHandler)+1;
+				printf("poop\n");
 				if(packetOut.srcHandleLen > 99) {printf("Invalid src handle, handle longer than 100 characters\n"); return -1;}
 				strcpy(packetOut.srcHandle, &srcHandler); 
+				printf("poop\n");
 				token = strtok(NULL, " "); // this should get number of destinations
+				printf("poop\n");
 				packetOut.numDest = token;
-				if(packetOut.numDest > 9){printf("Too many destinations\n"); return -1;}
-				if(packetOut.numDest < 2){printf("Too little destinations\n"); return -1;}
+				printf("num: %s\n", packetOut.numDest);
+				if(packetOut.numDest >= 9){printf("Too many destinations\n"); return -1;}
+				if(packetOut.numDest <= 2){printf("Too little destinations\n"); return -1;}
+				printf("poop\n");
 				for(int i = 0; i < packetOut.numDest; i++){
 					token = strtok(NULL, " "); // this should get handler of destinations
 					if((strlen(token)+1) > 99) {printf("Invalid dst handle #%d, handle longer than 100 characters\n", i); return -1;}
 					packetOut.dests[i].handleLen = strlen(token)+1;
 					strcpy(packetOut.dests[i].handle, token); 
 					printf("\tSending to %s\n", packetOut.dests[i].handle);
+					printf("poop1\n");
+
 				}
+				printf("poop\n");
+
 				uint8_t* theMessage = strtok(NULL, ""); // i love this function
+				printf("poop\n");
+
 				if(strlen(theMessage) >= 199){printf("This message is too big\n"); return -1;}
 			    strcpy(packetOut.message, theMessage);
 				memcpy(buffer, &packetOut, sizeof(Mpacket));
+				printf("poop\n");
+
 				return sizeof(Mpacket);
 				break;
 			}
@@ -236,15 +247,19 @@ void processMsgFromServer(int socketNum, uint8_t* buffer){
 		case C_S_C_BROADCAST:
 			break;
 		case C_S_C_MESSAGE: // %m command from other clients(c->s->c)
+		{
 			Mpacket* data = (Mpacket*) buffer;
 			printf("\n%s: %s", data->srcHandle, data->message); // should literally just spit out the message
 			break;
+		}
 		case C_S_C_MULTICAST:
 			break;
 		case S_C_MULTICAST_ERROR:
+		{
 			ServerPacket* data = (ServerPacket*) buffer;
 			printf("\nThis handle doesnt exist you chud: %s\n", data->message); // should literally just spit out the message
 			break;
+		}
 		case S_C_HANDLE_RESP_1:
 			break;
 		case S_C_HANDLE_RESP_2:

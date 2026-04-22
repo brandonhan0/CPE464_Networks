@@ -127,6 +127,7 @@ int readFromStdin(uint8_t * buffer){
 		int arg_counter = 0;
 		switch(command){
 			case MESSAGE: // for message we want to know the dest-handle-name first, than the rest is the tx-message
+			{
 				Mpacket packetOut = {};
 				packetOut.flag = 5;
 				packetOut.srcHandleLen = strlen(srcHandler)+1;
@@ -143,18 +144,25 @@ int readFromStdin(uint8_t * buffer){
 				memcpy(buffer, &packetOut, sizeof(Mpacket));
 				return sizeof(Mpacket);
 				break; // it never gets here but whatever
+			}
 			case MULTICAST:
+			{
 				while(token != NULL){
 					token = strtok(NULL, " ");
 				}
 				break;
+			}
 			case BROADCAST:
+			{
 				while(token != NULL){
 					token = strtok(NULL, " ");
 				}
 				break;
+			}
 			case HANDLELIST:
+			{
 				break;
+			}
 		}	
 	}
 }

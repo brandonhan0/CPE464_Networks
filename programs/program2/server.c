@@ -80,6 +80,7 @@ void recvFromClient(int clientSocket)
 
 		switch(flag){
 			case C_S_INIT:
+			{
 			 	InitPacket* data = (InitPacket*)dataBuffer;
 				ServerPacket message = {};
 				printf("%s has joined\n", data->srcHandle);
@@ -89,12 +90,15 @@ void recvFromClient(int clientSocket)
 				strcpy(&message.message, data->srcHandle);
 				int sendSize = sendPDU(clientSocket, &message, sizeof(ServerPacket), 0);
 				printf("init done\n");
-				addItem(clientSocket, data->srcHandle);
+				addItem(clientSocket, data->srcHandle); // adds to handle table
 				break;
+			}
 			case C_S_C_MESSAGE: // %m
-				Mpacket* data = (Mpacket*) dataBuffer;
-				
+			{
+				Mpacket* data = (Mpacket*)dataBuffer;
+				data->dests[0].handle
 				break;
+			}
 			case C_S_C_BROADCAST:
 				break;
 			case C_S_C_MULTICAST:

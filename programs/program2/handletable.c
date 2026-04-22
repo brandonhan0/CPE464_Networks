@@ -13,9 +13,8 @@ int addItem(int socketNum, uint8_t* handleName){
     if(curTableSize >= curMaxTableSize) increaseTableSize();
     tableItem newHandle = {};
     newHandle.socketNum = socketNum;
-    if(strlen(handleName) >= 99) return -1;
-    strncpy((char *)newHandle.handleName, (char *)handleName, sizeof(newHandle.handleName) - 1);
-    newHandle.handleName[sizeof(newHandle.handleName) - 1] = '\0';
+    if(strlen(handleName) >= sizeof(newHandle.handleName)) return -1;
+    strcpy(newHandle.handleName, handleName); // should work and add the null ternimator
     handleTable[curTableSize] = newHandle;
     curTableSize++;
     return 0;

@@ -91,6 +91,10 @@ void recvFromClient(int clientSocket)
 				printf("init done\n");
 				addItem(clientSocket, data->srcHandle);
 				break;
+			case C_S_C_MESSAGE: // %m
+				Mpacket* data = (Mpacket*) dataBuffer;
+				
+				break;
 			case C_S_C_BROADCAST:
 				break;
 			case C_S_C_MULTICAST:

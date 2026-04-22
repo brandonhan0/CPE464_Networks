@@ -43,9 +43,8 @@ int main(int argc, char * argv[]) // ./cclient handle server-name server-port i 
 	setupPollSet();
 
 	socketNum = tcpClientSetup(argv[2], argv[3], DEBUG_FLAG); // now its cclient handle server-name server-port, [1], [2] was local host, server port number
-
-    strncpy((char*)srcHandler, argv[1], sizeof(srcHandler) - 1); // should save the client handle on start up
-    srcHandler[sizeof(srcHandler) - 1] = '\0';
+    if(sizeof(srcHandler) <= strlen(argv[1])) return -1; 
+	strcpy(srcHandler, argv[1]); // should work and add the null ternimator	
 	addToPollSet(socketNum);
 	addToPollSet(STDIN_FILENO);
 
@@ -53,14 +52,12 @@ int main(int argc, char * argv[]) // ./cclient handle server-name server-port i 
 	while(true){
 		clientControl(socketNum);
 	}
-	
 	close(socketNum);
 	
 	return 0;
 }
 
-void sendToServer(int socketNum)
-{
+void sendToServer(int socketNum){
 	uint8_t buffer[MAXBUF];   //data buffer
 	int sendLen = 0;        //amount of data to send
 	int sent = 0;            //actual amount of data sent
@@ -99,11 +96,9 @@ int readFromStdin(uint8_t * buffer){
 		//tokenizing looked at string example code off google bc how else r u supposed to know how these functions work dawg
 		char *token = strtok(stdinBuffer, " "); // gets first token this should be command
 		int counter = 0;
-		while (token != NULL) {
+		if(token != NULL) { // gets command
 			printf("%s\n", token);
-			token = strtok(NULL, " ");
-
-			if(token[0] == '%' && counter == 0){
+			if(token[0] == '%'){
 				switch(token[1]){
 					case 'M':
 					case 'm':
@@ -126,9 +121,43 @@ int readFromStdin(uint8_t * buffer){
 						return -1;
 				}
 			}
-			counter++; // counter how many things and what thing ur on
 		}
+		
+		token = strtok(NULL, " ");
+		int arg_counter = 0;
+		switch(command){
+			case MESSAGE: // for message we want to know the dest-handle-name first, than the rest is the tx-message
+				Mpacket packetOut = {};
+				packetOut.flag = 5;
+				packetOut.srcHandleLen = strlen(srcHandler)+1;
+				if(packetOut.srcHandleLen > 99) {printf("Invalid src handle, handle longer than 100 characters\n"); return -1;}
+				strcpy(packetOut.srcHandle, &srcHandler); 
+				packetOut.numDest = 1;
+				token = strtok(NULL, " "); // this should get desthandle
+				packetOut.dests[0].handleLen = strlen(token)+1;
+				if(packetOut.dests[0].handleLen > 99) {printf("Invalid dst handle, handle longer than 100 characters\n"); return -1;}
+				strcpy(packetOut.dests[0].handle, token); 
+				uint8_t* theMessage = strtok(NULL, ""); // i love this function
+				if(strlen(theMessage) >= 199){printf("This message is to big\n"); return -1;}
+			    strcpy(packetOut.message, theMessage);
+				memcpy(buffer, &packetOut, sizeof(Mpacket));
+				return sizeof(Mpacket);
+				break; // it never gets here but whatever
+			case MULTICAST:
+				while(token != NULL){
+					token = strtok(NULL, " ");
+				}
+				break;
+			case BROADCAST:
+				while(token != NULL){
+					token = strtok(NULL, " ");
+				}
+				break;
+			case HANDLELIST:
+				break;
+		}	
 	}
+}
 
 
 
@@ -198,7 +227,7 @@ int readFromStdin(uint8_t * buffer){
 	// 		break;
 	// }	
 	// return -1;
-}
+
 
 void checkArgs(int argc, char * argv[])
 {
@@ -218,7 +247,6 @@ void clientControl(int socketNum){ // still need to do stuff with flag idk
 	int fd = pollCall(-1);
 	if(fd == socketNum){
 		// do socket
-		printf("do socket\n");
 		processMsgFromServer(socketNum, buffer);
 	} else{
 		// stdin

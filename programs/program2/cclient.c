@@ -84,7 +84,7 @@ void sendToServer(int socketNum){
 int readFromStdin(uint8_t * buffer){
 // THIS HAS TO PUT MESSAGE IN BUFFER AND RETURN SIZE OF BUFFER
 	char aChar = 0;
-	int inputLen = 0;        
+	int inputLen = -1;        
 	char prevChar = 0;
 	commands command;
 
@@ -96,7 +96,7 @@ int readFromStdin(uint8_t * buffer){
 		char *token = strtok(stdinBuffer, " "); // gets first token this should be command
 		int counter = 0;
 		if(token != NULL) { // gets command
-			if(token[0] == '%'){
+			if(token[0] == '%' && token[2] == '\0'){
 				switch(token[1]){
 					case 'M':
 					case 'm':
@@ -138,9 +138,9 @@ int readFromStdin(uint8_t * buffer){
 				if(strlen(theMessage) >= 199){printf("This message is too big\n"); return -1;}
 			    strcpy(packetOut.message, theMessage);
 				memcpy(buffer, &packetOut, sizeof(Mpacket));
-				printf("\n\tMessage size: %d \n\tClient sending: %s", sizeof(Mpacket), packetOut.message); // message comes with \n thats funny
-				printf("\tDest Handle size:%d \n\tDest Handle: %s\n\n", packetOut.dests[0].handleLen, packetOut.dests[0].handle);
-				return sizeof(Mpacket);
+				// printf("\n\tMessage size: %d \n\tClient sending: %s", sizeof(Mpacket), packetOut.message); // message comes with \n thats funny
+				// printf("\tDest Handle size:%d \n\tDest Handle: %s\n\n", packetOut.dests[0].handleLen, packetOut.dests[0].handle);
+				inputLen = sizeof(Mpacket);
 				break; // it never gets here but whatever
 			}
 			case MULTICAST:
@@ -150,32 +150,25 @@ int readFromStdin(uint8_t * buffer){
 				packetOut.srcHandleLen = strlen(srcHandler)+1;
 				if(packetOut.srcHandleLen > 99) {printf("Invalid src handle, handle longer than 100 characters\n"); return -1;}
 				strcpy(packetOut.srcHandle, &srcHandler); 
+
 				token = strtok(NULL, " "); // this should get number of destinations
-				packetOut.numDest = token;
-				printf("num: %s\n", packetOut.numDest);
-				if(packetOut.numDest >= 9){printf("Too many destinations\n"); return -1;}
-				if(packetOut.numDest <= 2){printf("Too little destinations\n"); return -1;}
-				printf("poop\n");
+				
+				packetOut.numDest = atoi(token);
+				printf("num dest: %d\n", packetOut.numDest);
+				if(packetOut.numDest > 9){printf("Too many destinations\n"); return -1;}
+				if(packetOut.numDest < 2){printf("Too little destinations\n"); return -1;}
 				for(int i = 0; i < packetOut.numDest; i++){
 					token = strtok(NULL, " "); // this should get handler of destinations
 					if((strlen(token)+1) > 99) {printf("Invalid dst handle #%d, handle longer than 100 characters\n", i); return -1;}
 					packetOut.dests[i].handleLen = strlen(token)+1;
 					strcpy(packetOut.dests[i].handle, token); 
 					printf("\tSending to %s\n", packetOut.dests[i].handle);
-					printf("poop1\n");
-
 				}
-				printf("poop\n");
-
 				uint8_t* theMessage = strtok(NULL, ""); // i love this function
-				printf("poop\n");
-
 				if(strlen(theMessage) >= 199){printf("This message is too big\n"); return -1;}
 			    strcpy(packetOut.message, theMessage);
 				memcpy(buffer, &packetOut, sizeof(Mpacket));
-				printf("poop\n");
-
-				return sizeof(Mpacket);
+				inputLen = sizeof(Mpacket);
 				break;
 			}
 			case HANDLELIST:
@@ -184,12 +177,13 @@ int readFromStdin(uint8_t * buffer){
 			}
 			case BROADCAST:
 			{
-				while(token != NULL){
-					token = strtok(NULL, " ");
-				}
 				break;
 			}
+			default:
+				printf("Invalid command\n");
+				return -1;
 		}	
+		return inputLen;
 	}
 }
 
@@ -249,7 +243,11 @@ void processMsgFromServer(int socketNum, uint8_t* buffer){
 			break;
 		}
 		case C_S_C_MULTICAST:
+		{
+			Mpacket* data = (Mpacket*)buffer;
+			printf("\n%s(from multicast): %s", data->srcHandle, data->message);
 			break;
+		}
 		case S_C_MULTICAST_ERROR:
 		{
 			ServerPacket* data = (ServerPacket*) buffer;

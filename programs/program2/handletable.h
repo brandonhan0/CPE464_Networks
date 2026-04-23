@@ -20,3 +20,4 @@ uint32_t getTableSize(void);
 void removeHandle(int socketNum);
 int giveHandleTableItem(uint8_t* buffer, int itemNum);
 int doesHandleExist(uint8_t* buffer, int bufferSize);
+int giveHandleTableSocketNum(int itemNum);

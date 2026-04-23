@@ -68,7 +68,6 @@ void recvFromClient(int clientSocket)
 
 	if ((messageLen = recvPDU(clientSocket, dataBuffer, MAXBUF, 0)) < 0) // data buffer will now have whatever pdu it is and now we gotta figure it out using the flag
 	{
-		printf("hi1\n");
 		perror("recv call");
 		exit(-1);
 	}
@@ -77,8 +76,6 @@ void recvFromClient(int clientSocket)
 	{
 		// process flag first
 		flag = dataBuffer[0];		
-		printf("flag: %d\n", flag);
-
 		switch(flag){
 			case C_S_INIT:
 			{
@@ -109,7 +106,16 @@ void recvFromClient(int clientSocket)
 				break;
 			}
 			case C_S_C_BROADCAST:
+				{
+				Bpacket* data = (Bpacket*)dataBuffer;
+				for(int i = 0; i < getTableSize(); i++){
+					int outSocket = giveHandleTableSocketNum(i); // gives me socket number of the handle
+					if(outSocket != clientSocket){
+						int sentBytes = sendPDU(outSocket, data, sizeof(Bpacket), 0); // forwards message to the other clients
+					}
+				}
 				break;
+				}
 			case C_S_C_MULTICAST: // this will send the message to everyone except the ppl that dont exist
 			{
 				Mpacket* data = (Mpacket*)dataBuffer;
@@ -129,7 +135,7 @@ void recvFromClient(int clientSocket)
 			case C_S_HANDLE_REQ:
 			{
 				InitPacket* data = (InitPacket*)dataBuffer;
-				printf("receiving data from:%s\n", data->srcHandle);
+				printf("receiving data from: %s\n", data->srcHandle);
 				
 				NumClientsPacket packetOut1 = {};
 				packetOut1.flag = 11;
@@ -142,7 +148,6 @@ void recvFromClient(int clientSocket)
 
 				for(int i = 0; i < getTableSize(); i++){ // sent handle names to client that wants them IMM after
 					int real = giveHandleTableItem(&packetOut2.Handle, i); // should put handle into the message
-					printf("real: %d\n", real);
 					if(real == 0){
 						packetOut2.HandleLen = strlen(packetOut2.Handle); // handle len
 						sentBytes = sendPDU(clientSocket, &packetOut2, sizeof(ServerPacket), 0); // sends a handle to the client socket that requested it

@@ -186,6 +186,16 @@ int readFromStdin(uint8_t * buffer){
 			}
 			case BROADCAST:
 			{
+				Bpacket packetOut = {};
+				packetOut.flag = 4;
+				packetOut.srcHandleLen = strlen(srcHandler)+1;
+				if(packetOut.srcHandleLen > 99) {printf("Invalid src handle, handle longer than 100 characters\n"); return -1;}
+				strcpy(packetOut.srcHandle, &srcHandler); 
+				uint8_t* theMessage = strtok(NULL, ""); // i love this function
+				if(strlen(theMessage) >= 199){printf("This message is too big\n"); return -1;}
+			    strcpy(packetOut.message, theMessage);
+				memcpy(buffer, &packetOut, sizeof(Bpacket)); // fill buffer with flag requesting handle table
+				inputLen = sizeof(Bpacket);
 				break;
 			}
 			default:
@@ -246,7 +256,11 @@ void processMsgFromServer(int socketNum, uint8_t* buffer){
 	
 	switch(flag){
 		case C_S_C_BROADCAST:
+		{
+			Bpacket* data = (Bpacket*)buffer;
+			printf("\n%s(from broadcast): %s", data->srcHandle, data->message);
 			break;
+		}
 		case C_S_C_MESSAGE: // %m command from other clients(c->s->c)
 		{
 			Mpacket* data = (Mpacket*) buffer;

@@ -37,8 +37,9 @@ int readFromStdin(uint8_t * buffer);
 void checkArgs(int argc, char * argv[]);
 
 int main(int argc, char * argv[]) // ./cclient handle server-name server-port i think server name would be like unix1-5 but we can ask like during class tmr
-{
+{	
 	int socketNum = 0;         //socket descriptor
+	int hold = 0;
 	checkArgs(argc, argv);
 	setupPollSet();
 
@@ -153,7 +154,7 @@ int readFromStdin(uint8_t * buffer){
 
 				token = strtok(NULL, " "); // this should get number of destinations
 				
-				packetOut.numDest = atoi(token);
+				packetOut.numDest = atoi(token); // this shit seg faulted for like 2 hours and i had no clue why fuck you
 				printf("num dest: %d\n", packetOut.numDest);
 				if(packetOut.numDest > 9){printf("Too many destinations\n"); return -1;}
 				if(packetOut.numDest < 2){printf("Too little destinations\n"); return -1;}
@@ -173,6 +174,13 @@ int readFromStdin(uint8_t * buffer){
 			}
 			case HANDLELIST:
 			{
+				InitPacket packetOut = {};
+				packetOut.flag = 10;
+				packetOut.srcHandleLen = strlen(srcHandler)+1;
+				if(packetOut.srcHandleLen > 99) {printf("Invalid src handle, handle longer than 100 characters\n"); return -1;}
+				strcpy(packetOut.srcHandle, &srcHandler); 
+				memcpy(buffer, &packetOut, sizeof(InitPacket)); // fill buffer with flag requesting handle table
+				inputLen = sizeof(InitPacket);
 				break;
 			}
 			case BROADCAST:
@@ -255,7 +263,10 @@ void processMsgFromServer(int socketNum, uint8_t* buffer){
 			break;
 		}
 		case S_C_HANDLE_RESP_1:
+		{
+			
 			break;
+		}
 		case S_C_HANDLE_RESP_2:
 			break;
 	    case S_C_L_DONE:

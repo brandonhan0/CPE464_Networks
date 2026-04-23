@@ -2,6 +2,8 @@
 
 tableItem *handleTable;
 
+// need to implement removing an item, implement this by just getting handle item and changing name to  "" TT
+
 int initHandleTable(void){
     handleTable = malloc(curMaxTableSize * sizeof(tableItem)); // can handle 100 of these bad boys
     if (handleTable == NULL) return -1;
@@ -53,7 +55,7 @@ int giveHandleTableItem(uint8_t* buffer, int itemNum){
     return 0;
 }
 
-int getTableSize(void){
+uint32_t getTableSize(void){
     return curTableSize;
 }
 

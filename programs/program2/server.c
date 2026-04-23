@@ -105,7 +105,7 @@ void recvFromClient(int clientSocket)
 				}
 				printf("This is the dest handle: %s", &data->dests[0].handle);
 				int receiverSocket = getSocketNum(&data->dests[0].handle);
-				int sentBytes = sendPDU(receiverSocket, data, messageLen, 0); // sends to the client
+				int sentBytes = sendPDU(receiverSocket, data, sizeof(Mpacket), 0); // sends to the client
 				break;
 			}
 			case C_S_C_BROADCAST:
@@ -127,13 +127,39 @@ void recvFromClient(int clientSocket)
 				break;
 			}
 			case C_S_HANDLE_REQ:
+			{
+				InitPacket* data = (InitPacket*)dataBuffer;
+				printf("receiving data from:%s\n", data->srcHandle);
+				
+				NumClientsPacket packetOut1 = {};
+				packetOut1.flag = 11;
+				packetOut1.numClients = getTableSize();
+				int sentBytes = sendPDU(clientSocket, &packetOut1, sizeof(NumClientsPacket), 0); // FIRST SEND sends back to the client
+				if(sentBytes < 0){printf("send number of handles error\n"); return -1;}
+
+				HandlePacket packetOut2 = {};
+				packetOut2.flag = 12;
+
+				for(int i = 0; i < getTableSize(); i++){ // sent handle names to client that wants them IMM after
+					giveHandleTableItem(&packetOut2.Handle, i); // should put handle into the message
+					packetOut2.HandleLen = strlen(packetOut2.Handle); // handle len
+					sentBytes = sendPDU(clientSocket, &packetOut2, sizeof(ServerPacket), 0); // sends a handle to the client socket that requested it
+					if(sentBytes < 0){printf("send handle error\n"); return -1;}
+				}
+
+				FlagPacket packetout3 = {};
+				packetout3.flag = 13;
+				sentBytes = sendPDU(clientSocket, &packetout3, sizeof(ServerPacket), 0); // sends a handle to the client socket that requested it
+				if(sentBytes < 0){printf("send handles done error\n"); return -1;}
 				break;
+			}	
 		}
 	}
 	else // if recv returns 0 than it means client has closed
 	{
 		close(clientSocket);
 		removeFromPollSet(clientSocket); 
+		// NEED TO REMOVE FROM HANDLE TABLE
 		printf("Socket %d: Connection closed by other side\n", clientSocket);
 	}
 

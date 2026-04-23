@@ -97,3 +97,23 @@ typedef struct{ // i think this is right idk
 } ServerPacket;
 #pragma pack(pop)
 
+#pragma pack(push, 1)
+typedef struct{ // i think this is right idk
+    uint8_t flag; // flag = 2/3 normally
+    uint32_t numClients; // length
+} NumClientsPacket;
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+typedef struct{ // i think this is right idk
+    uint8_t flag; // flag = 12 normally
+    uint8_t HandleLen; // length
+    uint8_t Handle[100]; // max 100 bytes
+} HandlePacket;
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+typedef struct{ // i think this is right idk
+    uint8_t flag; // flag = 12 normally
+} FlagPacket;
+#pragma pack(pop)

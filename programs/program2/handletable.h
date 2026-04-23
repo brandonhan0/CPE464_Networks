@@ -7,7 +7,7 @@ typedef struct{
     int socketNum;
 } tableItem;
 
-static int curTableSize = 0;
+static uint32_t curTableSize = 0;
 static int curMaxTableSize = 100;
 
 int initHandleTable(void);

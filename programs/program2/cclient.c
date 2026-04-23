@@ -31,6 +31,7 @@
 #define DEBUG_FLAG 1
 
 uint8_t srcHandler[100];
+int hold = 0;
 
 void sendToServer(int socketNum);
 int readFromStdin(uint8_t * buffer);
@@ -39,7 +40,6 @@ void checkArgs(int argc, char * argv[]);
 int main(int argc, char * argv[]) // ./cclient handle server-name server-port i think server name would be like unix1-5 but we can ask like during class tmr
 {	
 	int socketNum = 0;         //socket descriptor
-	int hold = 0;
 	checkArgs(argc, argv);
 	setupPollSet();
 
@@ -97,7 +97,7 @@ int readFromStdin(uint8_t * buffer){
 		char *token = strtok(stdinBuffer, " "); // gets first token this should be command
 		int counter = 0;
 		if(token != NULL) { // gets command
-			if(token[0] == '%' && token[2] == '\0'){
+			if(token[0] == '%'){ // && token[2] == '\0'
 				switch(token[1]){
 					case 'M':
 					case 'm':
@@ -181,6 +181,7 @@ int readFromStdin(uint8_t * buffer){
 				strcpy(packetOut.srcHandle, &srcHandler); 
 				memcpy(buffer, &packetOut, sizeof(InitPacket)); // fill buffer with flag requesting handle table
 				inputLen = sizeof(InitPacket);
+				hold = 1;
 				break;
 			}
 			case BROADCAST:
@@ -210,7 +211,8 @@ void checkArgs(int argc, char * argv[])
 void clientControl(int socketNum){ // still need to do stuff with flag idk
 	uint8_t buffer[MAXBUF];   //data buffer
 	uint8_t flag;
-	printf("$: ");
+
+	if(hold == 0)printf("$: ");
 	fflush(stdout); // pollCall was blocking my stdin print bro wtf
 	int fd = pollCall(-1);
 	if(fd == socketNum){
@@ -236,6 +238,7 @@ void processMsgFromServer(int socketNum, uint8_t* buffer){
 	int recvBytes = 0;
 	flags flag;
 	recvBytes = recvPDU(socketNum, buffer, MAXBUF, 0);
+	static int numHandles = 0;
 	if(recvBytes == 0){perror("Server terminated\n"); exit(-1);}
 
 	// process flag first
@@ -262,14 +265,21 @@ void processMsgFromServer(int socketNum, uint8_t* buffer){
 			printf("\nThis handle doesnt exist you chud: %s\n", data->message); // should literally just spit out the message
 			break;
 		}
-		case S_C_HANDLE_RESP_1:
+		case S_C_HANDLE_RESP_1: // number of clients in handle table
 		{
-			
+			NumClientsPacket* data = (NumClientsPacket*) buffer;
+			numHandles = data->numClients;
+			printf("Number of clients: %d\n", data->numClients);
 			break;
 		}
-		case S_C_HANDLE_RESP_2:
-			break;
-	    case S_C_L_DONE:
+		case S_C_HANDLE_RESP_2: // item in table
+		{
+			HandlePacket* data = (HandlePacket*) buffer;
+			printf("\t%s\n", data->Handle);
+			break; 
+		}
+	    case S_C_L_DONE: // table done
+			hold = 0;
 			break;
 	}
 }

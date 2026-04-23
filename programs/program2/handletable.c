@@ -15,6 +15,7 @@ int addItem(int socketNum, uint8_t* handleName){
     if(curTableSize >= curMaxTableSize) increaseTableSize();
     tableItem newHandle = {};
     newHandle.socketNum = socketNum;
+    newHandle.removed = 0;
     if(strlen(handleName) >= sizeof(newHandle.handleName)) return -1;
     strcpy(newHandle.handleName, handleName); // should work and add the null ternimator
     handleTable[curTableSize] = newHandle;
@@ -33,13 +34,26 @@ int increaseTableSize(){
 int getHandle(int socketNum, uint8_t* buffer){ // return size of handle of the socket number and fill the buffer
     for(int i = 0; i < curTableSize; i++){
         if(handleTable[i].socketNum == socketNum){
-            int size = strlen((uint8_t*)handleTable[i].handleName)+1;
-            memcpy(buffer, &handleTable[i].handleName, size); // fill buffer
-            return size;
+            if(handleTable[i].removed == 0){
+                int size = strlen((uint8_t*)handleTable[i].handleName)+1;
+                memcpy(buffer, &handleTable[i].handleName, size); // fill buffer
+                return size;
+            }
         }
     }
     return -1;
 }
+
+void removeHandle(int socketNum){ // this is so fake lol
+    for(int i = 0; i < curTableSize; i++){
+        if(handleTable[i].socketNum == socketNum){
+            handleTable[i].removed = 1;
+            char bye[100] = " ";
+            memcpy(&handleTable[i].handleName, &bye, 2);
+        }
+    }
+}
+
 
 int getSocketNum(uint8_t* handle){// must be null terminated
     for(int i = 0; i < curTableSize; i++){
@@ -50,7 +64,10 @@ int getSocketNum(uint8_t* handle){// must be null terminated
     return -1;
 }
 
-int giveHandleTableItem(uint8_t* buffer, int itemNum){
+int giveHandleTableItem(uint8_t* buffer, int itemNum){ // bad
+    printf("item num: %d\n", itemNum);
+    printf("item removed? %d\n", handleTable[itemNum].removed);
+    if(handleTable[itemNum].removed == 1){printf("fake handle");return 1;}
     memcpy(buffer, handleTable[itemNum].handleName, strlen(handleTable[itemNum].handleName)+1); // puts handle name in buffer
     return 0;
 }
@@ -63,6 +80,9 @@ int doesHandleExist(uint8_t* buffer, int bufferSize){
     for(int i = 0; i < curTableSize; i++){
         if(0 == strncmp(buffer, handleTable[i].handleName, bufferSize)){ // basically if it exists than return 1
             return 1; 
+        }
+        if( handleTable[i].removed == 1){
+            return 1;
         }
     }
     return 0; // otherwise return 0

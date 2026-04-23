@@ -141,10 +141,13 @@ void recvFromClient(int clientSocket)
 				packetOut2.flag = 12;
 
 				for(int i = 0; i < getTableSize(); i++){ // sent handle names to client that wants them IMM after
-					giveHandleTableItem(&packetOut2.Handle, i); // should put handle into the message
-					packetOut2.HandleLen = strlen(packetOut2.Handle); // handle len
-					sentBytes = sendPDU(clientSocket, &packetOut2, sizeof(ServerPacket), 0); // sends a handle to the client socket that requested it
-					if(sentBytes < 0){printf("send handle error\n"); return -1;}
+					int real = giveHandleTableItem(&packetOut2.Handle, i); // should put handle into the message
+					printf("real: %d\n", real);
+					if(real == 0){
+						packetOut2.HandleLen = strlen(packetOut2.Handle); // handle len
+						sentBytes = sendPDU(clientSocket, &packetOut2, sizeof(ServerPacket), 0); // sends a handle to the client socket that requested it
+						if(sentBytes < 0){printf("send handle error\n"); return -1;}
+					}
 				}
 
 				FlagPacket packetout3 = {};
@@ -160,6 +163,7 @@ void recvFromClient(int clientSocket)
 		close(clientSocket);
 		removeFromPollSet(clientSocket); 
 		// NEED TO REMOVE FROM HANDLE TABLE
+		removeHandle(clientSocket);
 		printf("Socket %d: Connection closed by other side\n", clientSocket);
 	}
 
@@ -172,14 +176,11 @@ int checkArgs(int argc, char *argv[])
 	// Checks args and returns port number
 	int portNumber = 0;
 
-	if (argc > 2)
-	{
+	if (argc > 2){
 		fprintf(stderr, "Usage %s [optional port number]\n", argv[0]);
 		exit(-1);
 	}
-	
-	if (argc == 2)
-	{
+	if (argc == 2){
 		portNumber = atoi(argv[1]);
 	}
 	

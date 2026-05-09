@@ -14,7 +14,9 @@
 #include "networks.h"
 #include "safeUtil.h"
 
-#define MAXBUF 80
+#include "application.h"
+
+#define MAXBUF 2048
 
 void processClient(int socketNum);
 int checkArgs(int argc, char *argv[]);
@@ -40,7 +42,7 @@ int main ( int argc, char *argv[]  )
 void processClient(int socketNum)
 {
 	int dataLen = 0; 
-	char buffer[MAXBUF + 1];	  
+	uint8_t buffer[MAXBUF];	  
 	struct sockaddr_in6 client;		
 	int clientAddrLen = sizeof(client);	
 	
@@ -48,15 +50,11 @@ void processClient(int socketNum)
 	while (buffer[0] != '.')
 	{
 		dataLen = safeRecvfrom(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) &client, &clientAddrLen);
-	
-		printf("Received message from client with ");
-		printIPInfo(&client);
-		printf(" Len: %d \'%s\'\n", dataLen, buffer);
+		printPDU(buffer, dataLen);
 
-		// just for fun send back to client number of bytes received
-		sprintf(buffer, "bytes: %d", dataLen);
-		safeSendto(socketNum, buffer, strlen(buffer)+1, 0, (struct sockaddr *) & client, clientAddrLen);
+		PDU_* bleh = (PDU_*) buffer;
 
+		safeSendto(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) & client, clientAddrLen);
 	}
 }
 
@@ -77,13 +75,11 @@ int checkArgs(int argc, char *argv[])
 	if (argc >= 2) // 1 will be the error rate
 	{
 		errorRate = atof(argv[1]);
-		printf("errorrate: %f: \n", errorRate);
 	}
-	
-	if (argc == 3) // 2 will be the port number
+
+	if (argc >= 3) // 2 will be the port number
 	{
 		portNumber = atoi(argv[2]);
-		printf("port number: %d\n", portNumber);
 	}
 	
 	return portNumber;

@@ -21,9 +21,10 @@
 
 #include "application.h"
 
-#define MAXBUF 80
+#define MAXBUF 2048
 
 double errorRate = 0;
+
 
 void talkToServer(int socketNum, struct sockaddr_in6 * server);
 int readFromStdin(char * buffer);
@@ -51,8 +52,8 @@ void talkToServer(int socketNum, struct sockaddr_in6 * server)
 	int serverAddrLen = sizeof(struct sockaddr_in6);
 	char * ipString = NULL;
 	int dataLen = 0; 
-	char buffer[MAXBUF+1];
-	static int seq_num = 0;
+	char buffer[MAXBUF];
+	static uint8_t seq_num = 0;
 	
 	buffer[0] = '\0';
 	while (buffer[0] != '.')
@@ -71,19 +72,25 @@ void talkToServer(int socketNum, struct sockaddr_in6 * server)
 
 		PDU_ message = {};
 
-		message.segmentNum = seq_num;
-		message.flag = 1;
-
 		dataLen = readFromStdin(buffer);
 
-		printf("Sending: %s with len: %d\n", buffer,dataLen);
-	
-		safeSendto(socketNum, buffer, dataLen, 0, (struct sockaddr *) server, serverAddrLen);
-		seq_num++;
-		safeRecvfrom(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) server, &serverAddrLen);
+		seq_num+=1;
+
+		int pduSize = createPDU(&message, seq_num, 1, buffer, dataLen);
+
+		// printf("Sending: %s with len: %d\n", buffer,dataLen);
+		int sendYes = safeSendto(socketNum, &message, pduSize, 0, (struct sockaddr *) server, serverAddrLen);
+		//printf("Sending: %s with len: %d\n", buffer,dataLen);
+
+		printPDU(&message, pduSize);
+
+		int bytesRecv = safeRecvfrom(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) server, &serverAddrLen);
 		// print out bytes received
-		ipString = ipAddressToString(server);
-		printf("Server with ip: %s and port %d said it received %s\n", ipString, ntohs(server->sin6_port), buffer);
+
+		printf("Received:\n");
+
+		PDU_* bleh = (PDU_*) buffer;
+		(printf("\tMessage: %s\n", bleh->payload));
 	}
 }
 

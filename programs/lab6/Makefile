@@ -5,8 +5,8 @@ CC = gcc
 CFLAGS = -g -Wall -std=gnu99
 
 
-SRC = networks.c  gethostbyname.c safeUtil.c pollLib.c checksum.c
-OBJS = networks.o gethostbyname.o safeUtil.o pollLib.o checksum.o
+SRC = networks.c  gethostbyname.c safeUtil.c pollLib.c checksum.c application.c
+OBJS = networks.o gethostbyname.o safeUtil.o pollLib.o checksum.o application.o
 
 #uncomment next two lines if your using sendtoErr() library
 #LIBS += libcpe464.2.21.a -lstdc++ -ldl
@@ -14,11 +14,11 @@ OBJS = networks.o gethostbyname.o safeUtil.o pollLib.o checksum.o
 
 all:  rcopy server
 
-rcopy: rcopy.c $(OBJS) 
+rcopy: rcopy.c  $(OBJS) 
 	$(CC) $(CFLAGS) -o rcopy rcopy.c $(OBJS) $(LIBS)
 
 server: server.c $(OBJS) 
-	$(CC) $(CFLAGS) -o server server.c  $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) -o server server.c $(OBJS) $(LIBS)
 
 %.o: %.c *.h 
 	gcc -c $(CFLAGS) $< -o $@ 

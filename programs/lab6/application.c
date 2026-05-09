@@ -1,6 +1,6 @@
 #include "application.h"
 
-int createPDU(PDU_* pdu, uint32_t sequenceNum, uint8_t flag, uint8_t* payload, int payloadLen){
+int createPDU(PDU_* pdu, uint32_t sequenceNum, uint8_t flag, uint8_t* payload, uint16_t payloadLen){
 
     /*
     
@@ -8,6 +8,7 @@ int createPDU(PDU_* pdu, uint32_t sequenceNum, uint8_t flag, uint8_t* payload, i
     
     typedef struct{
         uint32_t segmentNum; // network order
+        uint16_t checksum;
         uint8_t flag;
         int payloadLen;
         uint8_t payload[1400];
@@ -16,17 +17,18 @@ int createPDU(PDU_* pdu, uint32_t sequenceNum, uint8_t flag, uint8_t* payload, i
     */
 
     pdu->segmentNum = htonl(sequenceNum); // host to network order for 32 bits 
+    pdu->checksum = in_cksum((unsigned short*)mypdu, 8);
     pdu->flag = flag;
     pdu->payloadSize = payloadLen;
     memcpy(pdu->payload, payload, payloadLen); // should be pointer to the payload already
     return sizeof(PDU_);
 }
 
-void printPDU(PDU_* mypdu, int pduLength){
-    if(in_cksum((unsigned short*)mypdu, pduLength) == 0){
-        printf("Sequence Number: %d \n", mypdu->segmentNum);
-        printf("\tFlag: %d \n", mypdu->flag);
-        printf("\tPayload size: %d \n", mypdu->payloadSize);
-        printf("\tPayload: %s \n", mypdu->payload);
-    } else if(in_cksum((unsigned short*)mypdu, pduLength) != 0) printf("PDU(Seq num: %d): Corrupted\n", ntohl(mypdu->segmentNum)); // this is wrong do it better
+void printPDU(uint8_t* buffer, int pduLength){
+    PDU_* mypdu = (PDU_*) buffer;
+
+    printf("Sequence Number: %d \n", ntohl(mypdu->segmentNum));
+    printf("\tFlag: %d \n", mypdu->flag);
+    printf("\tPayload size: %d \n", mypdu->payloadSize);
+    printf("\tPayload: %s \n", mypdu->payload);
 }

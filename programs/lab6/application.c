@@ -17,18 +17,27 @@ int createPDU(PDU_* pdu, uint32_t sequenceNum, uint8_t flag, uint8_t* payload, u
     */
 
     pdu->segmentNum = htonl(sequenceNum); // host to network order for 32 bits 
-    pdu->checksum = in_cksum((unsigned short*)mypdu, 8);
     pdu->flag = flag;
     pdu->payloadSize = payloadLen;
     memcpy(pdu->payload, payload, payloadLen); // should be pointer to the payload already
+    pdu->checksum = 0;
+    int total_length = pdu->payloadSize + 7;
+    unsigned short crc = in_cksum((unsigned short*)pdu, total_length); // fake error
+    memcpy(&pdu->checksum, &crc, 2);
+    crc = in_cksum((unsigned short*)pdu, total_length); // fake error
+    if(crc == 0) printf("yay checksum is 0\n"); else printf("boo checksum bad\n");
     return sizeof(PDU_);
 }
 
 void printPDU(uint8_t* buffer, int pduLength){
     PDU_* mypdu = (PDU_*) buffer;
 
-    printf("Sequence Number: %d \n", ntohl(mypdu->segmentNum));
-    printf("\tFlag: %d \n", mypdu->flag);
-    printf("\tPayload size: %d \n", mypdu->payloadSize);
-    printf("\tPayload: %s \n", mypdu->payload);
+    int total_length = mypdu->payloadSize + 7;
+    int crc = in_cksum((unsigned short*)buffer, total_length); // fake error
+    if(crc == 0){
+        printf("Sequence Number: %d \n", ntohl(mypdu->segmentNum));
+        printf("\tFlag: %d \n", mypdu->flag);
+        printf("\tPayload size: %d \n", mypdu->payloadSize);
+        printf("\tPayload: %s \n", mypdu->payload);
+    }else printf("boo checksum bad\n");
 }

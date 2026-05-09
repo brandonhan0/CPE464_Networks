@@ -74,23 +74,27 @@ void talkToServer(int socketNum, struct sockaddr_in6 * server)
 
 		dataLen = readFromStdin(buffer);
 
-		seq_num+=1;
+		if(dataLen < 1400){
+			seq_num+=1;
 
-		int pduSize = createPDU(&message, seq_num, 1, buffer, dataLen);
-
-		// printf("Sending: %s with len: %d\n", buffer,dataLen);
-		int sendYes = safeSendto(socketNum, &message, pduSize, 0, (struct sockaddr *) server, serverAddrLen);
-		//printf("Sending: %s with len: %d\n", buffer,dataLen);
-
-		printPDU(&message, pduSize);
-
-		int bytesRecv = safeRecvfrom(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) server, &serverAddrLen);
-		// print out bytes received
-
-		printf("Received:\n");
-
-		PDU_* bleh = (PDU_*) buffer;
-		(printf("\tMessage: %s\n", bleh->payload));
+			int pduSize = createPDU(&message, seq_num, 1, buffer, dataLen);
+	
+			// printf("Sending: %s with len: %d\n", buffer,dataLen);
+			int sendYes = safeSendto(socketNum, &message, pduSize, 0, (struct sockaddr *) server, serverAddrLen);
+			//printf("Sending: %s with len: %d\n", buffer,dataLen);
+	
+			printPDU(&message, pduSize);
+	
+			int bytesRecv = safeRecvfrom(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) server, &serverAddrLen);
+			// print out bytes received
+	
+			printf("Received:\n");
+	
+			PDU_* bleh = (PDU_*) buffer;
+			(printf("\tMessage: %s\n", bleh->payload));
+		} else{
+			printf("Message too big, try again\n");
+		}
 	}
 }
 
@@ -135,9 +139,7 @@ int checkArgs(int argc, char * argv[])
 	}
 	
 	portNumber = atoi(argv[3]);
-	printf("port number: %d: \n", portNumber);
 	errorRate = atof(argv[1]);
-	printf("errorrate: %f: \n", errorRate);
 
 
 	return portNumber;

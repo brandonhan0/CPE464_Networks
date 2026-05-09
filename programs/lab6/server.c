@@ -15,6 +15,7 @@
 #include "safeUtil.h"
 
 #include "application.h"
+#include "libcpe464/networks/network-hooks.h" // this 
 
 #define MAXBUF 2048
 
@@ -29,7 +30,7 @@ int main ( int argc, char *argv[]  )
 	int portNumber = 0;
 
 	portNumber = checkArgs(argc, argv);
-		
+	sendErr_init(errorRate, DROP_ON, FLIP_OFF, DEBUG_ON, RSEED_ON);
 	socketNum = udpServerSetup(portNumber);
 
 	processClient(socketNum);
@@ -49,12 +50,12 @@ void processClient(int socketNum)
 	buffer[0] = '\0';
 	while (buffer[0] != '.')
 	{
-		dataLen = safeRecvfrom(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) &client, &clientAddrLen);
+		dataLen = recvfromErr(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) &client, &clientAddrLen);
 		printPDU(buffer, dataLen);
 
 		PDU_* bleh = (PDU_*) buffer;
 
-		safeSendto(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) & client, clientAddrLen);
+		sendtoErr(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) & client, clientAddrLen);
 	}
 }
 

@@ -20,6 +20,7 @@
 #include "safeUtil.h"
 
 #include "application.h"
+#include "libcpe464/networks/network-hooks.h" // this 
 
 #define MAXBUF 2048
 
@@ -37,9 +38,13 @@ int main (int argc, char *argv[])
 	int portNumber = 0;
 	
 	portNumber = checkArgs(argc, argv);
-	
+
+	sendErr_init(errorRate, DROP_ON, FLIP_OFF, DEBUG_ON, RSEED_ON);
+
 	socketNum = setupUdpClientToServer(&server, argv[2], portNumber);
 	
+	
+
 	talkToServer(socketNum, &server);
 	
 	close(socketNum);
@@ -63,6 +68,7 @@ void talkToServer(int socketNum, struct sockaddr_in6 * server)
 		
 		typedef struct{
 			uint32_t segmentNum; // network order
+			uint16_t checksum;
 			uint8_t flag;
 			int payloadSize;
 			uint8_t payload[1400];
@@ -71,29 +77,24 @@ void talkToServer(int socketNum, struct sockaddr_in6 * server)
 		*/
 
 		PDU_ message = {};
-
 		dataLen = readFromStdin(buffer);
-
 		if(dataLen < 1400){
 			seq_num+=1;
-
 			int pduSize = createPDU(&message, seq_num, 1, buffer, dataLen);
-	
-			// printf("Sending: %s with len: %d\n", buffer,dataLen);
-			int sendYes = safeSendto(socketNum, &message, pduSize, 0, (struct sockaddr *) server, serverAddrLen);
-			//printf("Sending: %s with len: %d\n", buffer,dataLen);
-	
+			int sendYes = sendtoErr(socketNum, &message, pduSize, 0, (struct sockaddr *) server, serverAddrLen);	
 			printPDU(&message, pduSize);
 	
-			int bytesRecv = safeRecvfrom(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) server, &serverAddrLen);
-			// print out bytes received
+			int bytesRecv = recvfromErr(socketNum, buffer, MAXBUF, 0, (struct sockaddr *) server, &serverAddrLen);
 	
 			printf("Received:\n");
 	
 			PDU_* bleh = (PDU_*) buffer;
 			(printf("\tMessage: %s\n", bleh->payload));
+
 		} else{
+
 			printf("Message too big, try again\n");
+
 		}
 	}
 }

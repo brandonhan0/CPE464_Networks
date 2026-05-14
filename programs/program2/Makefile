@@ -2,7 +2,7 @@
 # written by Hugh Smith - April 2019
 
 CC= gcc
-CFLAGS= -g -Wall -std=gnu99
+CFLAGS= -g -Wall -std=gnu99 -w
 LIBS = 
 
 OBJS = networks.o gethostbyname.o pollLib.o safeUtil.o

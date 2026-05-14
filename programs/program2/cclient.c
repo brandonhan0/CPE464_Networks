@@ -119,6 +119,9 @@ int readFromStdin(uint8_t * buffer){
 						printf("Invalid command\n");
 						return -1;
 				}
+			}else{
+				printf("Invalid command\n");
+				return -1;	
 			}
 		}
 		switch(command){

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "string.h"
+#include <stdio.h>
 
 typedef struct{
     uint8_t handleName[100];
